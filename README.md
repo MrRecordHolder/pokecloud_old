@@ -1,2 +1,2 @@
 # pokecloud
-Beta
+Pokemon Icons by: https://theartificial.com/

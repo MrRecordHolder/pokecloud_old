@@ -1,16 +1,22 @@
 ---
 description: >-
-  How to create a nest using the default and extend versions of the $create-nest
+  How to create nests using the default and extend versions of the $create-nest
   command for faster data input.
 ---
 
-# Creating A Nest
+# Creating Nests
 
 {% hint style="danger" %}
 **Before continuing, ensure your server has completed the community setup guide.**
 {% endhint %}
 
 {% page-ref page="../community-setup/" %}
+
+### Generated Nest Location
+
+The [**city**](https://pokecloud.gitbook.io/pokecloud/guides/community-setup/location-settings#city) ****and [**state**](https://pokecloud.gitbook.io/pokecloud/guides/community-setup/location-settings#state) from your sever settings is automatically attached to the new nest being created. If the server covers more than one city, you can change the default active city any time using [**this command**](https://pokecloud.gitbook.io/pokecloud/guides/community-setup/location-settings#city). 
+
+> _Its recommended to create all nests for one city, then change the city and continue creating all nests for that city._
 
 ### Generated Directions
 

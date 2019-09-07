@@ -11,6 +11,7 @@ Data used for nesting species is discovered by [The Sliph Road](https://thesilph
 ### Requirements
 
 * The nest must be created by the server reporting the nest
+* User reporting must be a verified Trainer with the [admin role](../community-setup/setting-the-admin-role.md)
 * The Pokemon must by a valid nesting species:
   * [english](../../data-sets/pokemon/en.md)
   * [german](../../data-sets/pokemon/de.md) 

@@ -15,6 +15,12 @@
   * [Reporting Nests](admin-guides/nest-management/reporting-nests.md)
   * [Updating Nests](admin-guides/nest-management/updating-nests.md)
 
+## Trainer Guides
+
+* [Search Nests](trainer-guides/search-nests/README.md)
+  * [Default Search](trainer-guides/search-nests/default-search.md)
+  * [Searching All](trainer-guides/search-nests/searching-all.md)
+
 ## Data Sets
 
 * [defaultNest.js](data-sets/defaultnest.js.md)

@@ -11,10 +11,10 @@ Data used for nesting species is discovered by [The Sliph Road](https://thesilph
 ### Requirements
 
 * The nest must be created by the server reporting the nest
-* User reporting must be a verified Trainer with the [admin role](../community-setup/setting-the-admin-role.md)
+* User reporting must be a verified Trainer with the [admin](../community-setup/setting-the-admin-role.md) or [nest manager](../community-setup/setting-the-admin-role.md#set-nest-role) role.
 * The Pokemon must by a valid nesting species:
   * [english](../../data-sets/pokemon/en.md)
-  * [german](../../data-sets/pokemon/de.md) 
+  * [german](../../data-sets/pokemon/de.md) _\(beta\)_ 
 
 {% tabs %}
 {% tab title="Full Command" %}
@@ -36,13 +36,13 @@ $rn hilton park, pikachu
 {% endtab %}
 {% endtabs %}
 
-This command updates the listed nest and the [data set](../../data-sets/defaultnest.js.md) for the nest.
+This command updates the [listed nest](listing-nests.md) and the [data set](../../data-sets/defaultnest.js.md) for the nest.
 
 ### Unreported
 
-If you accidentally report a species at the wrong nest you can change the nest back to "unreported"  by using the following command.
+If you accidentally report a species at the wrong nest you can change the nest back to "unreported" or "?" by using the following command.
 
 ```text
-$rn hilton park, unreported
+$rn hilton park, unreported | ?
 ```
 

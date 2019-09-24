@@ -6,11 +6,17 @@ description: Each valid nesting species has a pokedex file
 
 ```text
 {
+    "name": "",
+    "shiny": false,
     "dex": "",
-    "type": "",
-    "type_secondary": "",
-    "weather_boost": "",
-    "weather_boost_secondary": ""
+    "type": {
+        "primary": "",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "",
+        "secondary": ""
+    }
 }
 ```
 

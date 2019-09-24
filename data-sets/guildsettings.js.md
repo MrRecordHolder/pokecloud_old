@@ -9,25 +9,45 @@ const guildSettings = {
     name: "",
     id: "",
     owner: "",
-    city: "",
-    mapCity: "",
-    state: "",
-    region: "",
     language: "English",
-    timezone: "",
-    adminRole: "",
-    botChannel: "",
-    nestChannel: "",
     prefix: "$",
-    autoClean: true,
-    autoCleanReplies: true,
-    pokenav: false,
-    miscord: false,
-    migrationTag: false,
-    migrationTagChannel: "",
-    migrationMessageID: "",
-    lastMigrationDate: "",
-    nextMigrationDate: ""
+    location: {
+        city: "",
+        state: "",
+        country: "",
+        region: "",
+        timezone: "",
+        maps: {
+            tsr: ""
+        }
+    },
+    channels: {
+        admin: "",
+        nest: "",
+        log: ""
+    },
+    roles: {
+        admin: "",
+        nest: ""
+    },
+    bots: {
+        pokenav: false,
+        miscord: false
+    },
+    clean: {
+        commands: true,
+        replies: true,
+    },
+    migration: {
+        tag: false,
+        tagrole: "",
+        tagchannel: "",
+        messageid: "",
+        dates: {
+            last: "",
+            next: ""
+        }
+    }
 }
 
 module.exports = guildSettings

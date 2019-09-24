@@ -9,13 +9,13 @@ To ensure nest data accuracy, all information about a nest can be updated. Use t
 {% tabs %}
 {% tab title="Full Command" %}
 ```text
-$update-nest <nest name>, <argument>, <your input here>
+$update-nest <nest name>, <property>, <new value>
 ```
 {% endtab %}
 
 {% tab title="Alias" %}
 ```text
-$un <nest name>, <argument>, <your input here>
+$un <nest name>, <property>, <new value>
 ```
 {% endtab %}
 {% endtabs %}
@@ -23,7 +23,7 @@ $un <nest name>, <argument>, <your input here>
 {% hint style="success" %}
 **Arguments:  
   
-`pokestops` \| `gyms` \| `exgyms` \| `spawns` \|`city` \| `state` \| `google`**
+`pokestops` \| `gyms` \| `exgyms` \| `spawns` \|`city` \| `region` \|`state | country | google`**
 {% endhint %}
 
 ### Pokestops
@@ -56,6 +56,18 @@ $un hilton park, spawns, 42
 
 ```text
 $un hilton park, city, alpharetta
+```
+
+### Region
+
+```text
+$un hilton park, region, atlanta
+```
+
+### Country
+
+```text
+$un hilton park, country, usa
 ```
 
 ### State

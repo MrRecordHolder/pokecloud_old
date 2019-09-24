@@ -7,6 +7,7 @@ description: Valid English nesting species
 ```text
 [
 	"Unreported",
+	"?",
 	
 	"Bulbasaur",
 	"Charmander",
@@ -99,7 +100,9 @@ description: Valid English nesting species
 	"Chimchar",
 	"Piplup",
 	"Bidoof",
-	"Hippopotas"
+	"Hippopotas",
+
+	"Victini"
 ]
 
 ```

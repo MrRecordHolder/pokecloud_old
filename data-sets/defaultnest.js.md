@@ -8,23 +8,41 @@ description: The default PokeCloud nest structure.
 const defaultNest = {
     name: "",
     alias: "",
-    serverID: "",
-    city: "",
-    state: "",
+    serverid: "",
+    location: {
+        city: "",
+        state: "",
+        country: "",
+        region: "",
+        maps: {
+            lat: "",
+            lon: "",
+            google: "",
+            osm: "",
+            silphroad: ""
+        }
+    },
     pokestops: "?",
     gyms: "?",
-    exraidGyms: "",
-    exgyms: "",
+    exgyms: "0",
     spawns: "?",
-    pokemon: "?",
-    pokemon_image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true",
-    lastPokemon: "",
-    lastPokemon_image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true",
-    messageToedit: "",
-    google: "https://www.google.com/maps/dir/Current+Location/",
-    osm: ""
-  }
-  
-  module.exports = defaultNest
+    pokemon: {
+        current: {
+            name: "?",
+            image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true"
+        },
+        previous: {
+            name: "?",
+            image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true"
+        }
+    },
+    messageid: "",
+    servershare: {
+        serverid: "",
+        messageid: ""
+    }
+}
+
+module.exports = defaultNest
 ```
 

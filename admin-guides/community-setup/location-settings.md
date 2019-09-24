@@ -1,5 +1,5 @@
 ---
-description: 'How to set a servers city, state and timezone.'
+description: How to set all server location settings
 ---
 
 # Location Settings
@@ -14,7 +14,7 @@ Servers can search for locations another server has created however, they can NO
 
 **`REQUIRED`** A servers city is used to attach to newly created data automatically. This will be used for features such as nests and local events.
 
-> _**This should be the actual full city name NOT the region area like "Atlanta"**_
+> _**This should be the actual full city name NOT the region area such as the capital**_
 
 {% tabs %}
 {% tab title="Full Command" %}
@@ -62,14 +62,68 @@ $ss georgia
 {% endtab %}
 {% endtabs %}
 
+### Region
+
+A servers region is used to attach to newly created data automatically. This will be used for features such as nests and local events.
+
+> _**This should be something like the state capital or area region**_
+
+{% tabs %}
+{% tab title="Full Command" %}
+```
+$set-region <region name>
+```
+{% endtab %}
+
+{% tab title="Alias" %}
+```
+$sr <region name>
+```
+{% endtab %}
+
+{% tab title="Example" %}
+```
+$sr atlanta
+```
+{% endtab %}
+{% endtabs %}
+
+### Country
+
+A servers country is used to attach to newly created data automatically. This will be used for features such as nests and local events.
+
+{% tabs %}
+{% tab title="Full Command" %}
+```
+$set-country <Country name>
+```
+{% endtab %}
+
+{% tab title="Alias" %}
+```
+$scountry <country name>
+```
+{% endtab %}
+
+{% tab title="Example" %}
+```
+$scountry usa
+```
+{% endtab %}
+{% endtabs %}
+
 ### Timezone
 
-**`REQUIRED`** A servers timezone is used to attach to newly created data automatically. This will be used for features such as nests, migrations and local events. If a timezone is not set, servers will be defaulted to \(EST\) US Eastern Time Zone.
+**`REQUIRED`** A servers timezone is used to attach to newly created data automatically. This will be used for features such as nests, migrations and local events.
 
 {% hint style="success" %}
-**Timezone Arguments:  
-  
-`central` \| `eastern` \| `middle european` \| `mountain` \| `pacific`**
+**US Time-zones  
+`central` \| `eastern` \| `mountain` \| `pacific`**
+{% endhint %}
+
+{% hint style="success" %}
+**UTC Time-zones  
+`utc-3 | utc0` \| `utc1` \| `utc2` \| `utc3`\| `utc4`\| `utc5`**
 {% endhint %}
 
 {% tabs %}
@@ -86,8 +140,16 @@ $stz <timezone argument>
 {% endtab %}
 
 {% tab title="Example" %}
+#### US Example:
+
 ```text
 $stz eastern
+```
+
+#### UTC Example:
+
+```text
+$stz utc-3
 ```
 {% endtab %}
 {% endtabs %}

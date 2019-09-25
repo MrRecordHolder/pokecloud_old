@@ -1,0 +1,13 @@
+{
+    "name": "Totodile",
+    "shiny": true,
+    "dex": "158",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

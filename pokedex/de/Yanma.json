@@ -1,0 +1,13 @@
+{
+    "name": "Yanma",
+    "shiny": true,
+    "dex": "193",
+    "type": {
+        "primary": "Bug",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Windy"
+    }
+}

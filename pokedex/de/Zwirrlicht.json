@@ -1,0 +1,13 @@
+{
+    "name": "Duskull",
+    "shiny": true,
+    "dex": "355",
+    "type": {
+        "primary": "Ghost",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

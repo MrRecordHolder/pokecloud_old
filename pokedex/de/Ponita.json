@@ -1,0 +1,13 @@
+{
+    "name": "Ponyta",
+    "shiny": true,
+    "dex": "077",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

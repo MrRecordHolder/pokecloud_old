@@ -1,0 +1,13 @@
+{
+    "name": "Chinchou",
+    "shiny": false,
+    "dex": "170",
+    "type": {
+        "primary": "Water",
+        "secondary": "Electric"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Tepig",
+    "shiny": false,
+    "dex": "498",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

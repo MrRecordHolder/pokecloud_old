@@ -1,0 +1,13 @@
+{
+    "name": "Snivy",
+    "shiny": false,
+    "dex": "495",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

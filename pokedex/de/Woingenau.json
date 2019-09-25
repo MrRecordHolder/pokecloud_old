@@ -1,0 +1,13 @@
+{
+    "name": "Wobbuffet",
+    "shiny": false,
+    "dex": "202",
+    "type": {
+        "primary": "Psychic",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Windy",
+        "secondary": ""
+    }
+}

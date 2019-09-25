@@ -1,0 +1,13 @@
+{
+    "name": "Sableye",
+    "shiny": true,
+    "dex": "302",
+    "type": {
+        "primary": "Dark",
+        "secondary": "Ghost"
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

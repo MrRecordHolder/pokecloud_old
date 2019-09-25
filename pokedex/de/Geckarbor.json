@@ -1,0 +1,13 @@
+{
+    "name": "Treecko",
+    "shiny": true,
+    "dex": "252",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

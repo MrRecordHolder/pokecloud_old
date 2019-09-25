@@ -1,0 +1,13 @@
+{
+    "name": "Skitty",
+    "shiny": true,
+    "dex": "300",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

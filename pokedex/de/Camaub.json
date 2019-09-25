@@ -1,0 +1,13 @@
+{
+    "name": "Numel",
+    "shiny": false,
+    "dex": "322",
+    "type": {
+        "primary": "Fire",
+        "secondary": "Ground"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

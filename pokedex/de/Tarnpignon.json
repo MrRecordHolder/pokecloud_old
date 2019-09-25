@@ -1,0 +1,13 @@
+{
+    "name": "Foongus",
+    "shiny": false,
+    "dex": "590",
+    "type": {
+        "primary": "Grass",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "Cloudy"
+    }
+}

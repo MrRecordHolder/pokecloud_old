@@ -1,0 +1,13 @@
+{
+    "name": "Pikachu",
+    "shiny": true,
+    "dex": "025",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

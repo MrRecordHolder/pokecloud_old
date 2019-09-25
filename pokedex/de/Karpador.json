@@ -1,0 +1,13 @@
+{
+    "name": "Magikarp",
+    "shiny": true,
+    "dex": "129",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

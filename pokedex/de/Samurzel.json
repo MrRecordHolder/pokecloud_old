@@ -1,0 +1,13 @@
+{
+    "name": "Seedot",
+    "shiny": false,
+    "dex": "273",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

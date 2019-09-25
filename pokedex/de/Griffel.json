@@ -1,0 +1,13 @@
+{
+    "name": "Aipom",
+    "shiny": true,
+    "dex": "190",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

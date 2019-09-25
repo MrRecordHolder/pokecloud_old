@@ -1,0 +1,13 @@
+{
+    "name": "Victini",
+    "shiny": false,
+    "dex": "494",
+    "type": {
+        "primary": "Psychic",
+        "secondary": "Fire"
+    },
+    "weatherboost": {
+        "primary": "Windy",
+        "secondary": "Sunny"
+    }
+}

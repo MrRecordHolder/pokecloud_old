@@ -1,0 +1,13 @@
+{
+    "name": "Onix",
+    "shiny": true,
+    "dex": "095",
+    "type": {
+        "primary": "Rock",
+        "secondary": "Ground"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Sunny"
+    }
+}

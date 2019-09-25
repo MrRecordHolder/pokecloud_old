@@ -1,0 +1,13 @@
+{
+    "name": "Misdreavus",
+    "shiny": true,
+    "dex": "200",
+    "type": {
+        "primary": "Ghost",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

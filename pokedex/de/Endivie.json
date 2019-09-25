@@ -1,0 +1,13 @@
+{
+    "name": "Chikorita",
+    "shiny": true,
+    "dex": "152",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

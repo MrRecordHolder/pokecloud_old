@@ -1,0 +1,13 @@
+{
+    "name": "Machop",
+    "shiny": true,
+    "dex": "066",
+    "type": {
+        "primary": "Fighting",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": ""
+    }
+}

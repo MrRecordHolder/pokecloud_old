@@ -1,0 +1,13 @@
+{
+    "name": "Snubbull",
+    "shiny": true,
+    "dex": "209",
+    "type": {
+        "primary": "Fairy",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": ""
+    }
+}

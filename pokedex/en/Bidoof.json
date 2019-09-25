@@ -1,0 +1,13 @@
+{
+    "name": "Bidoof",
+    "shiny": false,
+    "dex": "399",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

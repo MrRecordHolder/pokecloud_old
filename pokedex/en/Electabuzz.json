@@ -1,0 +1,13 @@
+{
+    "name": "Electabuzz",
+    "shiny": false,
+    "dex": "125",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

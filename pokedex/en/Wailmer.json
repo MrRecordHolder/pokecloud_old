@@ -1,0 +1,13 @@
+{
+    "name": "Wailmer",
+    "shiny": true,
+    "dex": "320",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

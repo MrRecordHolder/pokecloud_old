@@ -1,0 +1,13 @@
+{
+    "name": "Magnemite",
+    "shiny": true,
+    "dex": "081",
+    "type": {
+        "primary": "Electric",
+        "secondary": "Steel"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Snow"
+    }
+}

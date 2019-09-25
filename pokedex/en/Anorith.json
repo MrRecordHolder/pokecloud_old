@@ -1,0 +1,13 @@
+{
+    "name": "Anorith",
+    "shiny": true,
+    "dex": "347",
+    "type": {
+        "primary": "Rock",
+        "secondary": "Bug"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Rain"
+    }
+}

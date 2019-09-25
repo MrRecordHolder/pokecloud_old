@@ -1,0 +1,13 @@
+{
+    "name": "Psyduck",
+    "shiny": true,
+    "dex": "054",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

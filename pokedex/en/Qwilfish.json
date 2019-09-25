@@ -1,0 +1,13 @@
+{
+    "name": "Qwilfish",
+    "shiny": false,
+    "dex": "211",
+    "type": {
+        "primary": "Water",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Cloudy"
+    }
+}

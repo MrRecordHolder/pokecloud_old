@@ -1,0 +1,13 @@
+{
+    "name": "Surskit",
+    "shiny": false,
+    "dex": "283",
+    "type": {
+        "primary": "Bug",
+        "secondary": "Water"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

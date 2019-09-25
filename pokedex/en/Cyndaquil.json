@@ -1,0 +1,13 @@
+{
+    "name": "Cyndaquil",
+    "shiny": true,
+    "dex": "155",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

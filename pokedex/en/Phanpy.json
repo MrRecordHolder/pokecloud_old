@@ -1,0 +1,13 @@
+{
+    "name": "Phanpy",
+    "shiny": false,
+    "dex": "231",
+    "type": {
+        "primary": "Ground",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

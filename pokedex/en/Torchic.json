@@ -1,0 +1,13 @@
+{
+    "name": "Torchic",
+    "shiny": true,
+    "dex": "255",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

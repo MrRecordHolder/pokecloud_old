@@ -1,0 +1,13 @@
+{
+    "name": "Skarmory",
+    "shiny": false,
+    "dex": "227",
+    "type": {
+        "primary": "Steel",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "Snow",
+        "secondary": "Windy"
+    }
+}

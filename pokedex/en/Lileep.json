@@ -1,0 +1,13 @@
+{
+    "name": "Lileep",
+    "shiny": true,
+    "dex": "345",
+    "type": {
+        "primary": "Rock",
+        "secondary": "Grass"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Sunny"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Abra",
+    "shiny": false,
+    "dex": "063",
+    "type": {
+        "primary": "Psychic",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Windy",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Corphish",
+    "shiny": false,
+    "dex": "341",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

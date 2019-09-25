@@ -1,0 +1,13 @@
+{
+    "name": "Stantler",
+    "shiny": false,
+    "dex": "234",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

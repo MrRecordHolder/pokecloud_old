@@ -1,0 +1,13 @@
+{
+    "name": "Girafarig",
+    "shiny": false,
+    "dex": "203",
+    "type": {
+        "primary": "Normal",
+        "secondary": "Psychic"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Windy"
+    }
+}

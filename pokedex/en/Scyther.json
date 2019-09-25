@@ -1,0 +1,13 @@
+{
+    "name": "Scyther",
+    "shiny": true,
+    "dex": "123",
+    "type": {
+        "primary": "Bug",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Windy"
+    }
+}

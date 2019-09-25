@@ -1,0 +1,13 @@
+{
+    "name": "Oshawott",
+    "shiny": false,
+    "dex": "501",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

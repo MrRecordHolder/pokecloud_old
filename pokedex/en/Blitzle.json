@@ -1,0 +1,13 @@
+{
+    "name": "Blitzle",
+    "shiny": false,
+    "dex": "522",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

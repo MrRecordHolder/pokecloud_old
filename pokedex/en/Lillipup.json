@@ -1,0 +1,13 @@
+{
+    "name": "Lillipup",
+    "shiny": true,
+    "dex": "506",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Cubone",
+    "shiny": true,
+    "dex": "104",
+    "type": {
+        "primary": "Ground",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

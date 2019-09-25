@@ -1,0 +1,13 @@
+{
+    "name": "Luvdisc",
+    "shiny": true,
+    "dex": "370",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

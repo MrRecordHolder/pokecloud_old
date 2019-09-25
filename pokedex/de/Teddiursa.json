@@ -1,0 +1,13 @@
+{
+    "name": "Teddiursa",
+    "shiny": false,
+    "dex": "216",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

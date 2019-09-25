@@ -1,0 +1,13 @@
+{
+    "name": "Piplup",
+    "shiny": false,
+    "dex": "393",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

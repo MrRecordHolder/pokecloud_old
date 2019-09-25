@@ -1,0 +1,13 @@
+{
+    "name": "Rhyhorn",
+    "shiny": false,
+    "dex": "111",
+    "type": {
+        "primary": "Ground",
+        "secondary": "Rock"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "PartlyCloudy"
+    }
+}

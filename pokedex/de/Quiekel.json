@@ -1,0 +1,13 @@
+{
+    "name": "Swinub",
+    "shiny": true,
+    "dex": "220",
+    "type": {
+        "primary": "Ice",
+        "secondary": "Ground"
+    },
+    "weatherboost": {
+        "primary": "Snow",
+        "secondary": "Sunny"
+    }
+}

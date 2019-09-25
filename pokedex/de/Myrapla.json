@@ -1,0 +1,13 @@
+{
+    "name": "Oddish",
+    "shiny": false,
+    "dex": "043",
+    "type": {
+        "primary": "Grass",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "Cloudy"
+    }
+}

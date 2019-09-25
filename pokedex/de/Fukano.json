@@ -1,0 +1,13 @@
+{
+    "name": "Growlithe",
+    "shiny": true,
+    "dex": "058",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Sneasel",
+    "shiny": true,
+    "dex": "215",
+    "type": {
+        "primary": "Dark",
+        "secondary": "Ice"
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": "Snow"
+    }
+}

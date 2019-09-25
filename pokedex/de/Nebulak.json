@@ -1,0 +1,13 @@
+{
+    "name": "Gastly",
+    "shiny": true,
+    "dex": "092",
+    "type": {
+        "primary": "Ghost",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": "Cloudy"
+    }
+}

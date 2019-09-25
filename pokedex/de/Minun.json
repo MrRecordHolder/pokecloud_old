@@ -1,0 +1,13 @@
+{
+    "name": "Minun",
+    "shiny": true,
+    "dex": "312",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

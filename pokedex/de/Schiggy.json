@@ -1,0 +1,13 @@
+{
+    "name": "Squirtle",
+    "shiny": true,
+    "dex": "007",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

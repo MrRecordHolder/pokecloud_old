@@ -1,0 +1,13 @@
+{
+    "name": "Plusle",
+    "shiny": true,
+    "dex": "311",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

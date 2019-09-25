@@ -1,0 +1,13 @@
+{
+    "name": "Purrloin",
+    "shiny": false,
+    "dex": "509",
+    "type": {
+        "primary": "Dark",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

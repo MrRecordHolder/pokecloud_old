@@ -1,0 +1,13 @@
+{
+    "name": "Turtwig",
+    "shiny": true,
+    "dex": "387",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Kabuto",
+    "shiny": true,
+    "dex": "141",
+    "type": {
+        "primary": "Rock",
+        "secondary": "Water"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Rain"
+    }
+}

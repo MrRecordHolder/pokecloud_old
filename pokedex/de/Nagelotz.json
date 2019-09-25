@@ -1,0 +1,13 @@
+{
+    "name": "Patrat",
+    "shiny": true,
+    "dex": "504",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

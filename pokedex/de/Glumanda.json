@@ -1,0 +1,13 @@
+{
+    "name": "Charmander",
+    "shiny": true,
+    "dex": "004",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

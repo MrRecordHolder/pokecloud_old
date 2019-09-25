@@ -1,0 +1,13 @@
+{
+    "name": "Makuhita",
+    "shiny": true,
+    "dex": "296",
+    "type": {
+        "primary": "Fighting",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": ""
+    }
+}

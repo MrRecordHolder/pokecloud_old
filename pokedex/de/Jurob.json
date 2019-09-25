@@ -1,0 +1,13 @@
+{
+    "name": "Seel",
+    "shiny": true,
+    "dex": "086",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

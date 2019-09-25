@@ -1,0 +1,13 @@
+{
+    "name": "Hippopotas",
+    "shiny": false,
+    "dex": "449",
+    "type": {
+        "primary": "Ground",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

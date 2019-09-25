@@ -1,0 +1,13 @@
+{
+    "name": "Clefairy",
+    "shiny": false,
+    "dex": "035",
+    "type": {
+        "primary": "Fairy",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": ""
+    }
+}

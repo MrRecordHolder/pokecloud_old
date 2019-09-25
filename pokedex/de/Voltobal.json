@@ -1,0 +1,13 @@
+{
+    "name": "Voltorb",
+    "shiny": false,
+    "dex": "100",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Eevee",
+    "shiny": true,
+    "dex": "133",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

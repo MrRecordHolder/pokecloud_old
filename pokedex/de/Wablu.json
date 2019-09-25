@@ -1,0 +1,13 @@
+{
+    "name": "Swablu",
+    "shiny": true,
+    "dex": "333",
+    "type": {
+        "primary": "Normal",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Windy"
+    }
+}

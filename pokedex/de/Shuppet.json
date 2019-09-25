@@ -1,0 +1,13 @@
+{
+    "name": "Shuppet",
+    "shiny": true,
+    "dex": "353",
+    "type": {
+        "primary": "Ghost",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

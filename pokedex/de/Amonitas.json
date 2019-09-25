@@ -1,0 +1,13 @@
+{
+    "name": "Omanyte",
+    "shiny": true,
+    "dex": "138",
+    "type": {
+        "primary": "Rock",
+        "secondary": "Water"
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": "Rain"
+    }
+}

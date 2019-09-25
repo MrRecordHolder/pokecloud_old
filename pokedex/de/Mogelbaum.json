@@ -1,0 +1,13 @@
+{
+    "name": "Sudowoodo",
+    "shiny": false,
+    "dex": "185",
+    "type": {
+        "primary": "Rock",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

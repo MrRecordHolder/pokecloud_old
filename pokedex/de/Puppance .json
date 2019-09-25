@@ -1,0 +1,13 @@
+{
+    "name": "Baltoy",
+    "shiny": false,
+    "dex": "343",
+    "type": {
+        "primary": "Ground",
+        "secondary": "Psychic"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "Windy"
+    }
+}

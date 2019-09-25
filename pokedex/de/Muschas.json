@@ -1,0 +1,13 @@
+{
+    "name": "Shellder",
+    "shiny": true,
+    "dex": "090",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

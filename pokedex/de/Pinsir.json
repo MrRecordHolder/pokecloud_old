@@ -1,0 +1,13 @@
+{
+    "name": "Pinsir",
+    "shiny": true,
+    "dex": "127",
+    "type": {
+        "primary": "Bug",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

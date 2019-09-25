@@ -1,0 +1,13 @@
+{
+    "name": "Spoink",
+    "shiny": true,
+    "dex": "325",
+    "type": {
+        "primary": "Psychic",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Windy",
+        "secondary": ""
+    }
+}

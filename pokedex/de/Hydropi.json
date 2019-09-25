@@ -1,0 +1,13 @@
+{
+    "name": "Mudkip",
+    "shiny": true,
+    "dex": "258",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

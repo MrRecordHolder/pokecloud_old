@@ -1,0 +1,13 @@
+{
+    "name": "Meditite",
+    "shiny": true,
+    "dex": "307",
+    "type": {
+        "primary": "Fighting",
+        "secondary": "Psychic"
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": "Windy"
+    }
+}

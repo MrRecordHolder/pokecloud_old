@@ -1,0 +1,13 @@
+{
+    "name": "Mantine",
+    "shiny": false,
+    "dex": "226",
+    "type": {
+        "primary": "Water",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Windy"
+    }
+}

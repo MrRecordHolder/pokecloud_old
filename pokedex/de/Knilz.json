@@ -1,0 +1,13 @@
+{
+    "name": "Shroomish",
+    "shiny": false,
+    "dex": "285",
+    "type": {
+        "primary": "Grass",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

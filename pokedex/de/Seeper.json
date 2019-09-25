@@ -1,0 +1,13 @@
+{
+    "name": "Horsea",
+    "shiny": true,
+    "dex": "116",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

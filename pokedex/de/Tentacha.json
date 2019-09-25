@@ -1,0 +1,13 @@
+{
+    "name": "Tentacool",
+    "shiny": false,
+    "dex": "072",
+    "type": {
+        "primary": "Water",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Cloudy"
+    }
+}

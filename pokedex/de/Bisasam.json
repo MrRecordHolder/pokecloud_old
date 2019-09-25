@@ -1,0 +1,13 @@
+{
+    "name": "Bulbasaur",
+    "shiny": true,
+    "dex": "001",
+    "type": {
+        "primary": "Grass",
+        "secondary": "Poison"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "Cloudy"
+    }
+}

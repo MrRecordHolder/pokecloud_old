@@ -1,0 +1,13 @@
+{
+    "name": "Vulpix",
+    "shiny": false,
+    "dex": "037",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Poochyene",
+    "shiny": true,
+    "dex": "261",
+    "type": {
+        "primary": "Dark",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Fog",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Exeggcute",
+    "shiny": false,
+    "dex": "102",
+    "type": {
+        "primary": "Grass",
+        "secondary": "Psychic"
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": "Windy"
+    }
+}

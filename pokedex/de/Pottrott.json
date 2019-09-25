@@ -1,0 +1,13 @@
+{
+    "name": "Shuckle",
+    "shiny": true,
+    "dex": "213",
+    "type": {
+        "primary": "Bug",
+        "secondary": "Ground"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "PartlyCloudy"
+    }
+}

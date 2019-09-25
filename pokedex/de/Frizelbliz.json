@@ -1,0 +1,13 @@
+{
+    "name": "Electrike",
+    "shiny": true,
+    "dex": "309",
+    "type": {
+        "primary": "Electric",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

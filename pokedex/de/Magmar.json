@@ -1,0 +1,13 @@
+{
+    "name": "Magmar",
+    "shiny": false,
+    "dex": "126",
+    "type": {
+        "primary": "Fire",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Sunny",
+        "secondary": ""
+    }
+}

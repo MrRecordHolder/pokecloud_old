@@ -1,0 +1,13 @@
+{
+    "name": "Poliwag",
+    "shiny": false,
+    "dex": "060",
+    "type": {
+        "primary": "Water",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

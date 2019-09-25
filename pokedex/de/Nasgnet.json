@@ -1,0 +1,13 @@
+{
+    "name": "Nosepass",
+    "shiny": false,
+    "dex": "299",
+    "type": {
+        "primary": "Rock",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

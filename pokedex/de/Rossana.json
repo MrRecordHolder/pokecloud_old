@@ -1,0 +1,13 @@
+{
+    "name": "Jynx",
+    "shiny": false,
+    "dex": "124",
+    "type": {
+        "primary": "Ice",
+        "secondary": "Psychic"
+    },
+    "weatherboost": {
+        "primary": "Snow",
+        "secondary": "Windy"
+    }
+}

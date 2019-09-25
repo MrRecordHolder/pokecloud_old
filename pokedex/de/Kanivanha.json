@@ -1,0 +1,13 @@
+{
+    "name": "Carvanha",
+    "shiny": false,
+    "dex": "318",
+    "type": {
+        "primary": "Water",
+        "secondary": "Dark"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Fog"
+    }
+}

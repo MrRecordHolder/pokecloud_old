@@ -1,0 +1,13 @@
+{
+    "name": "Wingull",
+    "shiny": true,
+    "dex": "278",
+    "type": {
+        "primary": "Water",
+        "secondary": "Flying"
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": "Windy"
+    }
+}

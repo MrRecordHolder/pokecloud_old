@@ -1,0 +1,21 @@
+{
+    "admin": {
+        "author": {
+            "text": "Error",
+            "image": ""
+        },
+        "title": "You must have the `ADMIN` role to perform this action",
+        "url": "",
+        "desciption": "",
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    }
+}

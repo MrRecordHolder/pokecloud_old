@@ -12,12 +12,12 @@ exports.run = (bot, message) => {
     // determine language response
     const language = require(`../../../responses/${serverlanguage}/permissions/channels.json`)
     // build embed
-    var ADMIN = new Discord.RichEmbed()
-        ADMIN.setColor(errors.color)
-        ADMIN.setAuthor(language.admin.author.text, errors.image)
-        ADMIN.setTitle(language.admin.title.a)
-        ADMIN.setDescription("🔰 <#" + nestchannel + ">")
-    return message.channel.send({embed: ADMIN}).then(deleteIT => {
+    var NEST = new Discord.RichEmbed()
+        NEST.setColor(errors.color)
+        NEST.setAuthor(language.admin.author.text, errors.image)
+        NEST.setTitle(language.admin.title.a)
+        NEST.setDescription("🔰 <#" + nestchannel + ">")
+    return message.channel.send({embed: NEST}).then(deleteIT => {
         if(cleanreplies === true) {               
             deleteIT.delete(times.thirtysec)
         } else { // if clean replies is false and current channel is the nest channel

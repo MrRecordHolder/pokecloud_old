@@ -1,14 +1,14 @@
 {
-    "title": "Migration Details",
-    "description": "Nest migrations occur every 2 weeks. An early migration can occur if Pokemon are added or removed from the nesting pool or events where nesting species have an increased shiny rate.",
+    "title": "Migrationsdetails",
+    "description": "Nestmigrationen sind alle 2 Wochen. Eine frühe Migration kann auftreten, wenn Pokémon zum Nest-pool hinzugefügt oder aus diesem entfernt werden. oder wenn Ereignisse auftreten, bei denen Nestende Pokemon eine erhöhte Chance haben Schillernd zu sein.",
     "field": {
         "one": {
-            "title": "Dates",
+            "title": "Daten",
             "description": {
-                "a": "Last Migration",
-                "b": "Next Migration"
+                "a": "Letze Migration",
+                "b": "Nächste Migration"
             }
         }
     },
-    "footer": "Data provided by PokeCloud &"
+    "footer": "Daten zur Verfügung gestellt von PokeCloud &"
 }

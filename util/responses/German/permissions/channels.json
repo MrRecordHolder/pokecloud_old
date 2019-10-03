@@ -1,0 +1,46 @@
+{
+    "admin": {
+        "author": {
+            "text": "Error",
+            "image": ""
+        },
+        "title": {
+            "a": "Diser Befehl kann nur in:",
+            "b": "benutzt werden"
+        },
+        "url": "",
+        "desciption": "",
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    },
+    "nest": {
+        "author": {
+            "text": "Error",
+            "image": ""
+        },
+        "title": {
+            "a": "Diser Befehl kann nur in:",
+            "b": "benutzt werden"
+        },
+        "url": "",
+        "desciption": "",
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    }
+}

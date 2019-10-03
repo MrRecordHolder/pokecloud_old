@@ -4,7 +4,32 @@
             "text": "Error",
             "image": ""
         },
-        "title": "Du brauchst die `ADMIN` Role um diese Aktion auszuführen",
+        "title": {
+            "a": "Du brauchst die",
+            "b": "Role um diese Aktion auszuführen"
+        },
+        "url": "",
+        "desciption": "",
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    },
+    "nest": {
+        "author": {
+            "text": "Error",
+            "image": ""
+        },
+        "title": {
+            "a": "Du brauchst die",
+            "b": "Role um diese Aktion auszuführen"
+        },
         "url": "",
         "desciption": "",
         "field": {

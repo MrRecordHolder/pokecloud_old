@@ -4,7 +4,29 @@
             "text": "Error",
             "image": ""
         },
-        "title": "You must have the `ADMIN` role to perform this action",
+        "title": {
+            "a": "You must have the",
+            "b": "role to perform this action"
+        },
+        "url": "",
+        "desciption": "",
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    },
+    "nest": {
+        "author": {
+            "text": "Error",
+            "image": ""
+        },
+        "title": "You must have the `NEST` role to perform this action",
         "url": "",
         "desciption": "",
         "field": {

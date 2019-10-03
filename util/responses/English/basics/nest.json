@@ -4,5 +4,8 @@
     "exgyms": "Eligible Ex Raid Gyms",
     "spawns": "Avg Sightings Per Visit",
     "notes": "Notes",
-    "directions": "Get Directions"
+    "directions": "Get Directions",
+    "unreported": "No species have been reported since the last migration. Visit the park and report back what you've discovered!",
+    "type": "Type",
+    "boost": "Boost"
 }

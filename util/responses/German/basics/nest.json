@@ -1,8 +1,8 @@
 {
     "pokestops": "Pokestops",
-    "gyms": "Gyms",
+    "gyms": "Turnhallen",
     "exgyms": "Eligible Ex Raid Gyms",
-    "spawns": "Spawns",
+    "spawns": "Durchschnittliche Sichtungen pro Besuch",
     "notes": "Notes",
-    "directions": "Get Directions"
+    "directions": "Anweisungen bekommen"
 }

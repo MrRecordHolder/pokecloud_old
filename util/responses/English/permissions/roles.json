@@ -26,7 +26,10 @@
             "text": "Error",
             "image": ""
         },
-        "title": "You must have the `NEST` role to perform this action",
+        "title": {
+            "a": "You must have the",
+            "b": "role to perform this action"
+        },
         "url": "",
         "desciption": "",
         "field": {

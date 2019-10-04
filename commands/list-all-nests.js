@@ -53,11 +53,10 @@ exports.run = (bot, message, args) => {
             const exraidgyms = bot.defaultNest.get(key, 'exgyms')
 
             const cpokemonname = bot.defaultNest.get(key, 'pokemon.current.name')
-            const cpokemonimage = bot.defaultNest.get(key, 'pokemon.current.image')
 
             // ensure pokedex file exists
             if(cpokemonname === "?") {
-                pokemon = require(`../pokedex/en/Unreported.json`)
+                pokemon = require(`../pokedex/English/Unreported.json`)
             } else {
                 try {
                     pokemon = require(`../pokedex/${serverlanguage}/${cpokemonname}.json`)
@@ -99,6 +98,7 @@ exports.run = (bot, message, args) => {
                 embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                 embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
             } else {
+                const cpokemonimage = bot.defaultNest.get(key, 'pokemon.current.image')
                 embed.setThumbnail(cpokemonimage)
                 if(pokemon.shiny === true) {
                     if(pokemon.type.secondary === "") {

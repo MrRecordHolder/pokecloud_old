@@ -10,7 +10,7 @@ module.exports.command = {
     aliases: ["t"],
     description: "command used for testing new features/structures.",
     category: "Developer",
-    usage: "",
+    usage: "<usage 1>, [optional usage]",
     example: "",
     permission: "**Role:** ? | **Channel:** ?",
     link: "https://pokecloud.gitbook.io/pokecloud/commands#list-all-nests",
@@ -18,6 +18,10 @@ module.exports.command = {
 }
 
 exports.run = (bot, message, args) => {
+
+    // get curent command data
+    commandalias = this.command.aliases
+    commandusage = this.command.usage
 
     userimage = message.author.avatarURL
     let user = message.mentions.users.first() || message.author
@@ -35,6 +39,7 @@ exports.run = (bot, message, args) => {
     // require guildSettings
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
+    const prefix = bot.guildSettings.get(message.guild.id, 'prefix')
 
     // check for admin & nest channel
     if(message.channel.id !== adminchannel && message.channel.id !== nestchannel) {
@@ -47,12 +52,14 @@ exports.run = (bot, message, args) => {
 
     // check for nest name
     if(!output[0]){
-
-    }
+        let checknestNP = require(`../util/runs/commands/missingnestNP.js`);
+        return checknestNP.run(bot, message);
+    };
 
     // check for pokemon
     if(!output[1]){
-
+        let checknestNP = require(`../util/runs/commands/missingnestNP.js`);
+        return checknestNP.run(bot, message);
     }
 
     //capitalize word function
@@ -75,23 +82,14 @@ exports.run = (bot, message, args) => {
     };
 
     // require guildSettings
-    const nestserverid = bot.defaultNest.get(nestKey, 'serverid')
-
-
-    // ensure nest is created by this community
-    if(nestserverid !== message.guild.id) {
-
-    }
-
-    // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     // require per language responses
     const basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
 
-    const nestingpokemon = require(`../pokedex/nesting/${serverlanguage}.json`)
-    
+    const nestingpokemon = require(`../pokedex/nesting/${serverlanguage}.json`)    
+
     // ensure pokemon can nest
-    if(nestingpokemon.some(word => output[1].includes(word)) || nestingpokemon.some(word => output[1].includes(word.toLowerCase())) ) {
+    if(nestingpokemon.some(word => nestPokemon.includes(word))) {
         if(nestPokemon === "?" || nestPokemon === " ?" || nestPokemon === "Unreported" || nestPokemon === " Unreported" || nestPokemon === "unreported" || nestPokemon === " unreported") {
             pokemon = require(`../pokedex/English/Unreported.json`)
             // set new nest prop
@@ -235,5 +233,7 @@ exports.run = (bot, message, args) => {
         }
     } else {
         // pokemon cant nest
+        let pogodontexist = require(`../util/runs/commands/pogodontexist.js`);
+        return pogodontexist.run(bot, message);
     }
 }

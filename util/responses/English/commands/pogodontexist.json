@@ -1,0 +1,10 @@
+{
+    "author": {
+        "text": "Error"
+    },
+    "title": {
+        "a": "That Pokemon does not exist or can not nest",
+        "b": ""
+    },
+    "description": "Visit [TheSilphRoad Pokedex](https://thesilphroad.com/catalog) then filter by **Nesting Species**. if you found this as an error please report it here."
+}

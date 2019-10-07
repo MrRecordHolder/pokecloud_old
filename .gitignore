@@ -20,7 +20,6 @@ commands/set-admin-channel.js
 commands/send-to-all-servers.js
 commands/search-nests.js
 commands/revert-migration.js
-commands/report-nest.js
 commands/report-migration.js
 commands/reload.js
 commands/nickname.js

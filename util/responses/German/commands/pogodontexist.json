@@ -3,8 +3,8 @@
         "text": "Error"
     },
     "title": {
-        "a": "That Pokemon does not exist or can not nest",
+        "a": "Das Pokemon existiert nicht oder kann nicht nesten",
         "b": ""
     },
-    "description": "Visit [TheSilphRoad Pokedex](https://thesilphroad.com/catalog) then filter by **Nesting Species**. if you found this as an error please report it here."
+    "description": "Besuche [TheSilphRoad Pokedex](https://thesilphroad.com/catalog) und filter nach **Nesting Species**. Wenn du dies als Fehler siehst, melde es bitte hier."
 }

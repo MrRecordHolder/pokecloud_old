@@ -28,3 +28,7 @@ commands/nests.js
 commands/list-nest.js
 commands/help.js
 commands/delete-nest.js
+events/ready.js
+events/message.js
+events/guildDelete.js
+events/guildCreate.js

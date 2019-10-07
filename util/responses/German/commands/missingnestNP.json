@@ -3,12 +3,12 @@
         "text": "Error"
     },
     "title": {
-        "a": "Must provide the nest name and the Pokemon nesting",
+        "a": "Nestname sowie das nestende Pokemon müssen angegeben werden",
         "b": ""
     },
     "field": {
         "one": {
-            "title": "Usage"
+            "title": "Nutzung"
         }
     }
 }

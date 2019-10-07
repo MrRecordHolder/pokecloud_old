@@ -39,7 +39,6 @@ exports.run = (bot, message, args) => {
     // require guildSettings
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
-    const prefix = bot.guildSettings.get(message.guild.id, 'prefix')
 
     // check for admin & nest channel
     if(message.channel.id !== adminchannel && message.channel.id !== nestchannel) {

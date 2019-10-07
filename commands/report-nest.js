@@ -28,10 +28,11 @@ exports.run = (bot, message, args) => {
 
     // require guildSettings
     const adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
+    const nestrole = bot.guildSettings.get(message.guild.id, 'roles.nest')
     
     // admin role check
-    if (!message.member.roles.some(role => role.name === adminrole)) {
-        let checkrole = require(`../util/runs/errors/permissions/admin.js`);
+    if (!message.member.roles.some(role => role.name === adminrole) && !message.member.roles.some(role => role.name === nestrole)) {
+        let checkrole = require(`../util/runs/errors/permissions/nestadmin.js`);
         return checkrole.run(bot, message, args);
     };
 

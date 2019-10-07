@@ -35,3 +35,5 @@ events/guildCreate.js
 util/config.json
 util/handler.js
 util/data/emoji.json
+package.json
+index.js

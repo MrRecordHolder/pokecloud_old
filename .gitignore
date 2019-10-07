@@ -32,3 +32,6 @@ events/ready.js
 events/message.js
 events/guildDelete.js
 events/guildCreate.js
+util/config.json
+util/handler.js
+util/data/emoji.json

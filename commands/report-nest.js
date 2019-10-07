@@ -113,9 +113,9 @@ exports.run = (bot, message, args) => {
             // set new nest prop
             bot.defaultNest.set(nestKey, nestPokemon, 'pokemon.current.name')
             if(pokemon.shiny === true) {
-                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${nestPokemonLow}-shiny@3x.png?raw=true`, 'pokemon.current.image')
+                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${pokemon.name.toLowerCase()}-shiny@3x.png?raw=true`, 'pokemon.current.image')
             } else {
-                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${nestPokemonLow}@3x.png?raw=true`, 'pokemon.current.image')
+                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${pokemon.name.toLowerCase()}@3x.png?raw=true`, 'pokemon.current.image')
             }
 
             // type emoji

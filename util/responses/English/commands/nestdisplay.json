@@ -1,0 +1,26 @@
+{
+    "admin": {
+        "author": {
+            "text": "",
+            "image": ""
+        },
+        "title": {
+            "a": "",
+            "b": ""
+        },
+        "url": "",
+        "description": {
+            "a": "Get Directions"
+        },
+        "field": {
+            "one": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "footer": {
+            "text": "",
+            "image": ""
+        }
+    }
+}

@@ -14,7 +14,7 @@ A Pokemon GO Discord bot for nest management. Quickly create, display, report, u
 * Timezone support for USA and UTC
 * Custom built Pokedex
 
-
+### Credits
 * Images provided by [TheArtificial](https://github.com/TheArtificial/pokemon-icons)
 * Nesting species confirmed by [TheSilphRoad](https://thesilphroad.com/catalog)
 * German translation by [@LegendRed01](https://github.com/LegendRed01)

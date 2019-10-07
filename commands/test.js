@@ -84,7 +84,7 @@ exports.run = (bot, message, args) => {
     // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     // require per language responses
-    const basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
+    basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
 
     const nestingpokemon = require(`../pokedex/nesting/${serverlanguage}.json`)    
 
@@ -137,6 +137,7 @@ exports.run = (bot, message, args) => {
 
             // fetch the message to edit
             bot.channels.get(nestchannel).fetchMessage(messageid).then(editEmbed => {
+                // edit the embed if it exist
                 if (editEmbed) {
                     const { RichEmbed } = require ('discord.js');
                     const embed = new RichEmbed (editEmbed.embeds[0])
@@ -147,7 +148,7 @@ exports.run = (bot, message, args) => {
                         embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                         embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
                     } else {
-                        const cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
+                        cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
                         embed.setThumbnail(cpokemonimage)
                         if(pokemon.shiny === true) {
                             if(pokemon.type.secondary === "") {
@@ -167,9 +168,12 @@ exports.run = (bot, message, args) => {
                     embed.setFooter("Reported by " + username, userimage)
                     embed.setTimestamp()
                 editEmbed.edit(embed);
-                }  
+                } 
+                // send success message
+                let nestreported = require(`../util/runs/commands/nestreported.js`);
+                return nestreported.run(bot, message);
             }).catch(err => {
-                // nest is not listed
+                // embed not listed, so list it
                 console.log(err)
                 // require defaultNest
                 const google = bot.defaultNest.get(nestKey, 'location.maps.google')
@@ -205,7 +209,7 @@ exports.run = (bot, message, args) => {
                     embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                     embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
                 } else {
-                    const cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
+                    cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
                     embed.setThumbnail(cpokemonimage)
                     if(pokemon.shiny === true) {
                         if(pokemon.type.secondary === "") {

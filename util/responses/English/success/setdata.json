@@ -1,0 +1,40 @@
+{
+    "channelID": {
+        "admin": {
+            "title": {
+                "a": "Admin channel id updated to",
+                "b": ""
+            }
+        },
+        "nest": {
+            "title": {
+                "a": "Nest channel id updated to",
+                "b": ""
+            }
+        }
+    },
+    "city": {
+        "title": {
+            "a": "City name updated to",
+            "b": ""
+        }
+    },
+    "state": {
+        "title": {
+            "a": "State name updated to",
+            "b": ""
+        }
+    },
+    "region": {
+        "title": {
+            "a": "Region updated to",
+            "b": ""
+        }
+    },
+    "country": {
+        "title": {
+            "a": "Country updated to",
+            "b": ""
+        }
+    }
+}

@@ -22,7 +22,8 @@ const defaultNest = {
     pokemon: {
         current: {
             name: "?",
-            image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true"
+            image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true",
+            type: ""
         },
         previous: {
             name: "?",

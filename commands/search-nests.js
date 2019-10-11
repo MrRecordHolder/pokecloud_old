@@ -19,6 +19,9 @@ exports.run = (bot, message, args) => {
     commandexample = this.command.example
     commandargs = this.command.arguments
 
+    // get command discord user
+    theuser = message.author.id
+
     // split the args
     let output = args.join(" ").trim(" ").split(",")
 
@@ -42,23 +45,18 @@ exports.run = (bot, message, args) => {
     nestprop = capitalize_Words(output[0]).trim(" ")
     nestpropvalue = capitalize_Words(output[1]).trim(" ")
 
-    serverstate = bot.guildSettings.get(message.guild.id, 'location.state')
-
     // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    serverstate = bot.guildSettings.get(message.guild.id, 'location.state')
 
-    
+    // require per language responses
+    const basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
 
     // create embed
     var embed = new Discord.RichEmbed()
 
-    // get command discord user
-    theuser = message.author.id
-
 
     //////////////// check for valid arguments
-
-
 
     if(nestprop === "City" || nestprop === "C") {
         usersearch = bot.defaultNest.filter(v => v.location.city === nestpropvalue);
@@ -69,14 +67,14 @@ exports.run = (bot, message, args) => {
             sall = capitalize_Words(output[2]).trim(" ")
             if(sall === "All") {
                 eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-                embed.setTitle("Worldwide City Search: " + nestpropvalue)
+                embed.setTitle(basicNestLanguage.search.worldwide)
                 embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
             }
         } else {
             statewidesearch = usersearch.filter(v => v.location.state === serverstate);
             reportedstatewide = statewidesearch.filter(v => v.pokemon.current.name !== "?")
             eachnest = reportedstatewide.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-            embed.setTitle("Reported Statewide Search: " + nestpropvalue)
+            embed.setTitle(basicNestLanguage.search.statewide)
             embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
         }
         embed.setColor("RANDOM")
@@ -123,11 +121,11 @@ exports.run = (bot, message, args) => {
                         embed.setDescription(eachnest.sort().slice(20, 30))
                         if(output[2]) {
                             if(sall === "All") {
-                                embed.setTitle("Worldwide City Search: " + nestpropvalue)
+                                embed.setTitle(basicNestLanguage.search.worldwide)
                                 embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
                             }
                         } else {                    
-                            embed.setTitle("Statewide City Search: " + nestpropvalue)
+                            embed.setTitle(basicNestLanguage.search.statewide)
                             embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
                         }
                         bot.users.get(theuser).send(embed)
@@ -169,7 +167,7 @@ exports.run = (bot, message, args) => {
         usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
         eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
            
-        embed.setTitle("Statewide Search: " + nestpropvalue)
+        embed.setTitle(basicNestLanguage.search.statewide)
         embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
         embed.setColor("RANDOM")
         embed.setDescription(eachnest.sort().slice(0, 10))
@@ -210,7 +208,7 @@ exports.run = (bot, message, args) => {
                         usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
 
                         // page 1
-                        embed.setTitle("Statewide Search: " + nestpropvalue)
+                        embed.setTitle(basicNestLanguage.search.statewide)
                         embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
                         embed.setColor("RANDOM")
                         embed.setDescription(eachnest.sort().slice(20, 30))

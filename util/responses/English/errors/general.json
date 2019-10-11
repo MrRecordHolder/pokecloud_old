@@ -19,6 +19,14 @@
             "region": "Must provide a region name to set",
             "country": "Must provide a country name to set",
             "nestprop": "Must provide a valid argument and input"
+        },
+
+        "permission": {
+            "channel": "This command must be used in:",
+            "role": {
+                "a": "You must have the",
+                "b": "role to perform this action"
+            }
         }
     }
 }

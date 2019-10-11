@@ -5,7 +5,7 @@ exports.run = (bot, message) => {
     const nmigrationdate = bot.guildSettings.get(message.guild.id, 'migration.dates.next')
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     // require per language responses
-    const language = require(`../../responses/${serverlanguage}/commands/migrationdetails.json`)
+    const language = require(`../../responses/${serverlanguage}/migration/details.json`)
     // list the migration message    
     var MIGATION = new Discord.RichEmbed()
         MIGATION.setColor("RANDOM")

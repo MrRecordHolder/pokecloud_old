@@ -7,12 +7,11 @@ exports.run = (bot, message) => {
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     // determine language response
     const errors = require(`../../../responses/${serverlanguage}/errors/general.json`)    
-    const language = require(`../../../responses/${serverlanguage}/errors/pokemon.json`)
     // build embed
     var embed = new Discord.RichEmbed()
         embed.setColor(errors.color)
         embed.setAuthor(errors.code.zero, errors.image)
-        embed.setTitle(pokemonName + " " + language.dontNest.title.a)
+        embed.setTitle(pokemonName + " " + errors.respose.three)
     return message.channel.send({embed: embed}).then(deleteIT => {
         if(cleanreplies === true) {               
             deleteIT.delete(times.thirtysec)

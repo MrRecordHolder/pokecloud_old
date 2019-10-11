@@ -27,7 +27,7 @@ exports.run = (bot, message, args) => {
     // require guildSettings
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
 
-    // check for admin channel
+    // check for nest channel
     if(message.channel.id !== nestchannel) {
         let checkchannel = require(`../util/runs/errors/channels/nest.js`);
         return checkchannel.run(bot, message, args);
@@ -40,6 +40,8 @@ exports.run = (bot, message, args) => {
 
     // sort all keys
     bot.defaultNest.keyArray().sort().forEach(key =>{
+        
+        
         // ensure the nest is created by the currrent server
         if(bot.defaultNest.get(key, `serverid`) === message.guild.id) {
 

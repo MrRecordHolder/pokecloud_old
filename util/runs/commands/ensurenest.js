@@ -1,19 +1,17 @@
 const Discord = require("discord.js")
 const times = require("../../data/times.json")
-const errors = require("../../data/errors.json")
 
 exports.run = (bot, message) => {
     // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    const errors = require(`../../responses/${serverlanguage}/errors/general.json`)
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
     const cleanreplies = bot.guildSettings.get(message.guild.id, 'clean.replies')
-    // require per language responses
-    const language = require(`../../responses/${serverlanguage}/commands/ensurenest.json`)
     // list the migration message    
     var embed = new Discord.RichEmbed()
-        .setAuthor(language.author.text, errors.image)
+        .setAuthor(errors.code.zero, errors.image)
         .setColor(errors.color)
-        .setTitle(nestName + " " + language.title.a)     
+        .setTitle(nestName + " " + errors.response.one)     
     return message.channel.send(embed).then(deleteIT => {
         if(cleanreplies === true) {               
             deleteIT.delete(times.thirtysec)

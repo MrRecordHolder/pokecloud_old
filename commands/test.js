@@ -1,8 +1,4 @@
 const Discord = require("discord.js")
-const emoji = require("../util/data/emoji.json")
-const times = require("../util/data/times.json")
-const errors = require("../util/data/errors.json")
-const tsr = require("../util/data/tsr.json")
 
 
 module.exports.command = {
@@ -19,224 +15,357 @@ module.exports.command = {
 
 exports.run = (bot, message, args) => {
 
-    // get curent command data
-    commandalias = this.command.aliases
-    commandusage = this.command.usage
-
-    userimage = message.author.avatarURL
-    let user = message.mentions.users.first() || message.author
-    const username = message.guild.member(user).displayName
-
-    // require guildSettings
-    const adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
-    
-    // admin role check
-    if (!message.member.roles.some(role => role.name === adminrole)) {
-        let checkrole = require(`../util/runs/errors/permissions/admin.js`);
-        return checkrole.run(bot, message, args);
-    };
-
-    // require guildSettings
-    const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
-    const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
-
-    // check for admin & nest channel
-    if(message.channel.id !== adminchannel && message.channel.id !== nestchannel) {
-        let checkchannel = require(`../util/runs/errors/channels/nestadmin.js`);
-        return checkchannel.run(bot, message, args);
-    };
-
     // split the args
-    let output = args.join(" ").trim().split(",")
+    let output = args.join(" ").trim(" ").split(",")
 
-    // check for nest name
-    if(!output[0]){
-        let checknestNP = require(`../util/runs/commands/missingnestNP.js`);
+    // check for nest property
+    if(!output[0]) {
+        let checknestNP = require(`../util/runs/errors/args/searchterms`);
         return checknestNP.run(bot, message);
     };
 
-    // check for pokemon
-    if(!output[1]){
-        let checknestNP = require(`../util/runs/commands/missingnestNP.js`);
+    // check for nest property value
+    if(!output[1]) {
+        let checknestNP = require(`../util/runs/errors/args/searchterms`);
         return checknestNP.run(bot, message);
-    }
+    };
 
     //capitalize word function
     function capitalize_Words(output) {
         return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
 
-    //geneate outputs
-    nestName = capitalize_Words(output[0])
-    nestPokemon = capitalize_Words(output[1]).trim()
-    nestPokemonLow = output[1].trim().toLowerCase()
+    nestprop = capitalize_Words(output[0]).trim(" ")
+    nestpropvalue = capitalize_Words(output[1]).trim(" ")
 
-    // generate nest key
-    nestKey = `${message.guild.id}-${nestName}`
-    
-    // if nest doesn't exist
-    if(!bot.defaultNest.has(nestKey)) {
-        let ensurenest = require(`../util/runs/commands/ensurenest.js`);
-        return ensurenest.run(bot, message, args);
-    };
+    serverstate = bot.guildSettings.get(message.guild.id, 'location.state')
 
     // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
-    // require per language responses
-    basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
 
-    const nestingpokemon = require(`../pokedex/nesting/${serverlanguage}.json`)    
+    
 
-    // ensure pokemon can nest
-    if(nestingpokemon.some(word => nestPokemon.includes(word))) {
-        if(nestPokemon === "?" || nestPokemon === " ?" || nestPokemon === "Unreported" || nestPokemon === " Unreported" || nestPokemon === "unreported" || nestPokemon === " unreported") {
-            pokemon = require(`../pokedex/English/Unreported.json`)
-            // set new nest prop
-            bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true`, 'pokemon.current.image')
-            bot.defaultNest.set(nestKey, "?", 'pokemon.current.name')
+    // create embed
+    var embed = new Discord.RichEmbed()
+
+    // get command discord user
+    theuser = message.author.id
+
+
+    //////////////// check for valid arguments
+
+
+
+    if(nestprop === "City" || nestprop === "C") {
+        usersearch = bot.defaultNest.filter(v => v.location.city === nestpropvalue);
+
+        
+        // check if the search is for all nests, if not return statewide
+        if(output[2]) {
+            sall = capitalize_Words(output[2]).trim(" ")
+            if(sall === "All") {
+                eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
+                embed.setTitle("Worldwide City Search: " + nestpropvalue)
+                embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
+            }
         } else {
-            // ensure the pokedex file exist
-            try {
-                pokemon = require(`../pokedex/${serverlanguage}/${nestPokemon}.json`)
-            } 
-            // pokedex doesnt exist
-            catch {
-                var embed = new Discord.RichEmbed()
-                    .setAuthor("Error", errors.image)
-                    .setColor(errors.color)
-                    .setTitle(nestPokemon + " is missing a Pokedex file... Please submit an issue on Github.")
-                    .setDescription("[**SUBMIT ISSUE CLICK HERE**](https://github.com/MrRecordHolder/pokecloud/issues)")
-                return message.channel.send(embed).then(deleteIT => {
-                    deleteIT.delete(times.thirtysec)
-                });
-            }
+            statewidesearch = usersearch.filter(v => v.location.state === serverstate);
+            eachnest = statewidesearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
+            embed.setTitle("Statewide City Search: " + nestpropvalue)
+            embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+        }
+        embed.setColor("RANDOM")
+        embed.setDescription(eachnest.sort().slice(0, 10))
+        // send first 10 nests
+        message.channel.send(embed);
 
-            // set new nest prop
-            bot.defaultNest.set(nestKey, nestPokemon, 'pokemon.current.name')
-            if(pokemon.shiny === true) {
-                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${nestPokemonLow}-shiny@3x.png?raw=true`, 'pokemon.current.image')
-            } else {
-                bot.defaultNest.set(nestKey, `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokemon.dex}-${nestPokemonLow}@3x.png?raw=true`, 'pokemon.current.image')
-            }
-
-
-            // type emoji
-            primaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokemon.type.primary}`)
-            SecondaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokemon.type.secondary}`)
-
-            // weather boost emoji
-            primaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokemon.weatherboost.primary}`)
-            secondaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokemon.weatherboost.secondary}`)
-
-            // shiny emoji
-            shinyEmoji = bot.emojis.find(emoji => emoji.name === `Icon_Shiny`)
-
-
-            const messageid = bot.defaultNest.get(nestKey, 'messageid')
-
-            // fetch the message to edit
-            bot.channels.get(nestchannel).fetchMessage(messageid).then(editEmbed => {
-                // edit the embed if it exist
-                if (editEmbed) {
-                    const { RichEmbed } = require ('discord.js');
-                    const embed = new RichEmbed (editEmbed.embeds[0])
-                    // clear pokemon info
-                    embed.fields.length = 0
-                    // pokemon info
-                    if(pokemon.name === "?") {
-                        embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
-                        embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
-                    } else {
-                        cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
-                        embed.setThumbnail(cpokemonimage)
-                        if(pokemon.shiny === true) {
-                            if(pokemon.type.secondary === "") {
-                                embed.addField("#" + pokemon.dex + " " + pokemon.name + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
-                            } else {
-                                embed.addField("#" + pokemon.dex + " " + pokemon.name + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
-                            }
-                        } else {
-                            if(pokemon.type.secondary === "") {
-                                embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
-                            } else {
-                                embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.typ}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
-                            }                    
-                        }
+        // wait then send nests 11-20
+        setTimeout(function(){
+            if(eachnest.length > 10) {
+                embed.setTitle("")
+                embed.setDescription(eachnest.sort().slice(10, 20))
+                if(output[2]) {
+                    if(sall === "All") {
+                        embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
                     }
-                    
-                    embed.setFooter("Reported by " + username, userimage)
-                    embed.setTimestamp()
-                editEmbed.edit(embed);
-                } 
-                // send success message
-                let nestreported = require(`../util/runs/commands/nestreported.js`);
-                return nestreported.run(bot, message);
-            }).catch(err => {
-                // embed not listed, so list it
-                console.log(err)
-                // require defaultNest
-                const google = bot.defaultNest.get(nestKey, 'location.maps.google')
-                const pokestops = bot.defaultNest.get(nestKey, 'pokestops')
-                const gyms = bot.defaultNest.get(nestKey, 'gyms')
-                const spawns = bot.defaultNest.get(nestKey, 'spawns')
-                const exraidgyms = bot.defaultNest.get(nestKey, 'exgyms')
-
-                // basics emoji support
-                const pokestopEmoji = bot.emojis.get(emoji.pokestop);
-                const gymEmoji = bot.emojis.get(emoji.gym);
-                const exraidGymEmoji = bot.emojis.get(emoji.exraid);
-                const spawnEmoji = bot.emojis.get(emoji.spawn);
-
-                // generate the nest embed
-                const embed = new Discord.RichEmbed()
-
-                // clear pokemon info
-                embed.fields.length = 0
-
-                const nestcity = bot.defaultNest.get(nestKey, 'location.city')
-
-                // nest info
-                embed.setTitle("**" + nestName + "** - " + nestcity)
-                if(exraidgyms > 0) {
-                    embed.setDescription(`[${basicNestLanguage.directions}](${google})\n${pokestopEmoji}${basicNestLanguage.pokestops}: ${pokestops} | ${gymEmoji}${basicNestLanguage.gyms}: ${gyms}\n${exraidGymEmoji}${basicNestLanguage.exgyms}: ${exraidgyms}\n${spawnEmoji}${basicNestLanguage.spawns}: ${spawns}`)
-                } else {
-                    embed.setDescription(`[${basicNestLanguage.directions}](${google})\n${pokestopEmoji}${basicNestLanguage.pokestops}: ${pokestops} | ${gymEmoji}${basicNestLanguage.gyms}: ${gyms}\n${spawnEmoji}${basicNestLanguage.spawns}: ${spawns}`)
+                } else {                    
+                    embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
                 }
+                message.channel.send(embed);
+            }
+        }, 1500);
 
-                // pokemon info
-                if(pokemon.name === "?") {
-                    embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
-                    embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
-                } else {
-                    cpokemonimage = bot.defaultNest.get(nestKey, 'pokemon.current.image')
-                    embed.setThumbnail(cpokemonimage)
-                    if(pokemon.shiny === true) {
-                        if(pokemon.type.secondary === "") {
-                            embed.addField("#" + pokemon.dex + " " + pokemon.name + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
-                        } else {
-                            embed.addField("#" + pokemon.dex + " " + pokemon.name + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
-                        }
-                    } else {
-                        if(pokemon.type.secondary === "") {
-                            embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
-                        } else {
-                            embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.typ}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
-                        }                    
-                    }
-                }
+        // react to see more via private message
+        setTimeout(function(){
+            if(eachnest.length > 20) {
+            embed.description.length = 0
+            embed.setTitle("Would you like to see more nests?")
+            embed.setDescription("")
+            embed.setFooter("👍 = Send results in private message | ❌ = Cancel")
+            message.channel.send(embed).then(message => {
+                message.react('👍').then(() => message.react('❌'));
+
+                const filter = (reaction, user) => {
+                    return ['👍', '❌'].includes(reaction.emoji.name) && user.id === theuser;
+                };
                 
-                embed.setFooter("Reported by " + username, userimage)
-                embed.setTimestamp();
-                // send new nest embed
-                message.channel.send(embed).then(message => {
-                    // save the sent embed message id
-                    bot.defaultNest.set(nestKey, message.channel.lastMessageID, "messageid")
+                message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+            
+                    if (reaction.emoji.name === '👍') {
+                        message.delete();
+                        embed.setDescription(eachnest.sort().slice(20, 30))
+                        if(output[2]) {
+                            if(sall === "All") {
+                                embed.setTitle("Worldwide City Search: " + nestpropvalue)
+                                embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
+                            }
+                        } else {                    
+                            embed.setTitle("Statewide City Search: " + nestpropvalue)
+                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+                        }
+                        bot.users.get(theuser).send(embed)
+
+                        // wait then send nests 31-40
+                        setTimeout(function(){
+                            if(eachnest.length > 10) {
+                                embed.setTitle("")
+                                embed.setDescription(eachnest.sort().slice(30, 40))
+                                if(output[2]) {
+                                    if(sall === "All") {
+                                        embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
+                                    }
+                                } else {                    
+                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+                                }
+                                bot.users.get(theuser).send(embed)
+                            }
+                        }, 1500);
+                    } else {
+                        // cancel the message
+                        message.delete();
+                    }
+                })
+                .catch(collected => {
+                    // no reaction made
+                    message.delete();
                 });
             })
         }
-    } else {
-        // pokemon cant nest
-        let pogodontexist = require(`../util/runs/commands/pogodontexist.js`);
-        return pogodontexist.run(bot, message);
+        }, 2300);
     }
+
+
+
+
+
+    if(nestprop === "State" || nestprop === "S") {
+        usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
+        eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
+           
+        embed.setTitle("Statewide Search: " + nestpropvalue)
+        embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+        embed.setColor("RANDOM")
+        embed.setDescription(eachnest.sort().slice(0, 10))
+        // send first 10 nests
+        message.channel.send(embed);
+
+        // wait then send nests 11-20
+        setTimeout(function(){
+            if(eachnest.length > 10) {
+                embed.setTitle("")
+                embed.setDescription(eachnest.sort().slice(10, 20))
+                embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+                
+                message.channel.send(embed);
+            }
+        }, 1500);
+
+        // react to see more via private message
+        setTimeout(function(){
+            if(eachnest.length > 20) {
+            embed.description.length = 0
+            embed.setTitle("Would you like to see more nests?")
+            embed.setDescription("")
+            embed.setFooter("👍 = Send results in private message | ❌ = Cancel")
+            message.channel.send(embed).then(message => {
+                message.react('👍').then(() => message.react('❌'));
+
+                const filter = (reaction, user) => {
+                    return ['👍', '❌'].includes(reaction.emoji.name) && user.id === theuser;
+                };
+                
+                message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+            
+                    if (reaction.emoji.name === '👍') {
+                        message.delete();
+                        usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
+
+                        // page 1
+                        embed.setTitle("Statewide Search: " + nestpropvalue)
+                        embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+                        embed.setColor("RANDOM")
+                        embed.setDescription(eachnest.sort().slice(20, 30))
+                        bot.users.get(theuser).send(embed);
+
+                        // page 2
+                        setTimeout(function(){
+                            if(eachnest.length > 30) {
+                                embed.setTitle("")
+                                embed.setDescription(eachnest.sort().slice(30, 40))
+                                embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+                                bot.users.get(theuser).send(embed);
+                            }
+                        }, 1500);
+
+                        // page 3
+                        setTimeout(function(){
+                            if(eachnest.length > 40) {
+                                embed.setTitle("")
+                                embed.setDescription(eachnest.sort().slice(30, 40))
+                                embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+                                bot.users.get(theuser).send(embed);
+                            }
+                        }, 1500);
+
+                        // page 3
+                        setTimeout(function(){
+                            if(eachnest.length > 50) {
+                                embed.setTitle("")
+                                embed.setDescription(eachnest.sort().slice(40, 50))
+                                embed.setFooter(`${eachnest.sort().slice(0, 41).length} - ${eachnest.sort().slice(0, 50).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
+                                bot.users.get(theuser).send(embed);
+                            }
+                        }, 1500);
+
+                    } else {
+                        // cancel the message
+                        message.delete();
+                    }
+                })
+                .catch(collected => {
+                    // no reaction made
+                    message.delete();
+                });
+            })
+        }
+        }, 2300);
+    }
+
+
+
+
+    if(nestprop === "Pokemon" || nestprop === "P") {
+        usersearch = bot.defaultNest.filter(v => v.pokemon.current.name === nestpropvalue);
+        // check if the search is for all nests, if not return statewide
+        if(output[2]) {
+            sall = capitalize_Words(output[2]).trim(" ")
+            if(sall === "All") {
+                eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google})\n${key.location.city}, ${key.location.state}`])
+                embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total ${nestpropvalue} nests worldwide`)
+            }
+        } else {
+            statewidesearch = usersearch.filter(v => v.location.state === serverstate);
+            eachnest = statewidesearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google})\n${key.location.city}, ${key.location.state}`])
+            embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total ${nestpropvalue} nests in ${serverstate}`)
+        }
+
+        // get pokedex file
+        try {
+            pokedex = require(`../pokedex/${serverlanguage}/${nestpropvalue}.json`)
+        } catch {
+            let dontNest = require(`../util/runs/errors/pokemon/dontnest`);
+            return dontNest.run(bot, message);
+        }
+
+        if(pokedex.type.primary === 'Bug') {
+            embed.setColor('GREEN')
+        }
+        if(pokedex.type.primary === 'Dark') {
+            embed.setColor('RANDOM')
+        }
+        if(pokedex.type.primary === 'Dragon') {
+            embed.setColor('BLUE')
+        }
+        if(pokedex.type.primary === 'Electric') {
+            embed.setColor('0xFFFF00')
+        }
+        if(pokedex.type.primary === 'Fairy') {
+            embed.setColor('PINK')
+        }
+        if(pokedex.type.primary === 'Fighting') {
+            embed.setColor('ORANGE')
+        }
+        if(pokedex.type.primary === 'Fire') {
+            embed.setColor('RED')
+        }
+        if(pokedex.type.primary === 'Flying') {
+            embed.setColor('LIGHT_BLUE')
+        }
+        if(pokedex.type.primary === 'Ghost') {
+            embed.setColor('LIGHT_PURPLE')
+        }
+        if(pokedex.type.primary === 'Grass') {
+            embed.setColor('GREEN')
+        }
+        if(pokedex.type.primary === 'Ground') {
+            embed.setColor('LIGHT_ORANGE')
+        }
+        if(pokedex.type.primary === 'Ice') {
+            embed.setColor('LIGHT_BLUE')
+        }
+        if(pokedex.type.primary === 'Normal') {
+            embed.setColor('LIGHT_GREY')
+        }
+        if(pokedex.type.primary === 'Poison') {
+            embed.setColor('PURPLE')
+        }
+        if(pokedex.type.primary === 'Psychic') {
+            embed.setColor('PINK')
+        }
+        if(pokedex.type.primary === 'Rock') {
+            embed.setColor('ORANGE')
+        }
+        if(pokedex.type.primary === 'Steel') {
+            embed.setColor('DARK_GREY')
+        }
+        if(pokedex.type.primary === 'Water') {
+            embed.setColor('BLUE')
+        }
+
+        // type emoji
+        primaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex.type.primary}`)
+        SecondaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex.type.secondary}`)
+
+        // weather boost emoji
+        primaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex.weatherboost.primary}`)
+        secondaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex.weatherboost.secondary}`)
+
+        // shiny emoji
+        shinyEmoji = bot.emojis.find(emoji => emoji.name === `Icon_Shiny`)
+        
+        if(pokedex.shiny === true) {
+            embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokedex.dex}-${pokedex.name.toLowerCase()}-shiny@3x.png?raw=true`)
+            if(pokedex.type.secondary === "") {
+                embed.setTitle("#" + pokedex.dex + " " + nestpropvalue + " " + shinyEmoji + `\nType: ${primaryTypeEmoji} ${pokedex.type.primary}\nBoost: ${primaryweatherboostemoji} ${pokedex.weatherboost.primary}`)
+            } else {
+                embed.setTitle("#" + pokedex.dex + " " + nestpropvalue + " " + shinyEmoji + `\nType: ${primaryTypeEmoji} ${pokedex.type.primary} ${SecondaryTypeEmoji} ${pokedex.type.secondary}\nBoost: ${primaryweatherboostemoji} ${pokedex.weatherboost.primary} ${secondaryweatherboostemoji} ${pokedex.weatherboost.secondary}`)
+            }
+        } else {
+            embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokedex.dex}-${pokedex.name.toLowerCase()}@3x.png?raw=true`)
+            if(pokedex.type.secondary === "") {
+                embed.setTitle("#" + pokedex.dex + " " + nestpropvalue + `\nType: ${primaryTypeEmoji} ${pokedex.type.primary}\nBoost: ${primaryweatherboostemoji} ${pokedex.weatherboost.primary}`)
+            } else {
+                embed.setTitle("#" + pokedex.dex + " " + nestpropvalue + `\nType: ${primaryTypeEmoji} ${pokedex.type.primary} ${SecondaryTypeEmoji} ${pokedex.type.secondary}\nBoost: ${primaryweatherboostemoji} ${pokedex.weatherboost.primary} ${secondaryweatherboostemoji} ${pokedex.weatherboost.secondary}`)
+            }
+        }   
+        embed.setDescription(eachnest.sort().slice(0, 10))
+        embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests`)    
+        message.channel.send(embed);
+    }
+
+    
 }

@@ -1,20 +1,18 @@
 const Discord = require("discord.js")
 const times = require("../../data/times.json")
-const success = require("../../data/success.json")
 
 exports.run = (bot, message) => {
     // require guildSettings
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    const success = require(`../../responses/${serverlanguage}/success/general.json`)
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
     const cleanreplies = bot.guildSettings.get(message.guild.id, 'clean.replies')
     const prefix = bot.guildSettings.get(message.guild.id, 'prefix')
-    // require per language responses
-    const language = require(`../../responses/${serverlanguage}/commands/nestreported.json`)
     // list the migration message    
     var embed = new Discord.RichEmbed()
-        embed.setAuthor("Success", success.image)
+        embed.setAuthor(success.code.zero, success.image)
         embed.setColor(success.color)
-        embed.setTitle(nestPokemon + " " + language.title.a + " " + nestName)
+        embed.setTitle(nestPokemon + " " + success.response.one + " " + nestName)
 
 
         // pokemon info

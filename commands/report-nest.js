@@ -234,7 +234,8 @@ exports.run = (bot, message, args) => {
         }
     } else {
         // pokemon cant nest
-        let pogodontexist = require(`../util/runs/commands/pogodontexist.js`);
-        return pogodontexist.run(bot, message);
+        pokemonName = nestPokemon
+        let dontNest = require(`../util/runs/errors/pokemon/dontnest`);
+        return dontNest.run(bot, message);
     }
 };

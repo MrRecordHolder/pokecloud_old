@@ -9,8 +9,7 @@
 
     "response": {
         "one": "does not exist",
-        "two": "Must provide the nest name and the Pokemon nesting",
-        "three": "is not a verified nesting species",
+        "two": "is not a verified nesting species",
 
         "arg": {
             "channelid": "Must provide a channel id to set",
@@ -18,7 +17,8 @@
             "state": "Must provide a state name to set",
             "region": "Must provide a region name to set",
             "country": "Must provide a country name to set",
-            "nestprop": "Must provide a valid argument and input"
+            "nestprop": "Must provide a valid argument and input",
+            "nameANDpokemon": "Must provide the nest name and the Pokemon nesting"
         },
 
         "permission": {

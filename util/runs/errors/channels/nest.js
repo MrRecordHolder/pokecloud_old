@@ -1,6 +1,4 @@
 const Discord = require("discord.js")
-
-const errors = require("../../../data/errors.json")
 const times = require("../../../data/times.json")
 
 exports.run = (bot, message) => {
@@ -8,14 +6,13 @@ exports.run = (bot, message) => {
     // require guildSettings
     const cleanreplies = bot.guildSettings.get(message.guild.id, 'clean.replies')
     const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    const errors = require(`../../../responses/${serverlanguage}/errors/general.json`)
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
-    // determine language response
-    const language = require(`../../../responses/${serverlanguage}/permissions/channels.json`)
     // build embed
     var NEST = new Discord.RichEmbed()
         NEST.setColor(errors.color)
-        NEST.setAuthor(language.admin.author.text, errors.image)
-        NEST.setTitle(language.nest.title.a)
+        NEST.setAuthor(errors.code.zero, errors.image)
+        NEST.setTitle(errors.permission.channel)
         NEST.setDescription("🔰 <#" + nestchannel + ">")
     return message.channel.send({embed: NEST}).then(deleteIT => {
         if(cleanreplies === true) {               

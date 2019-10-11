@@ -2,6 +2,6 @@
     "tensec": "10000",
     "twentysec": "20000",
     "thirtysec": "30000",
-    "oneminutes": "60000",
+    "oneminute": "60000",
     "twominutes": "120000"
 }

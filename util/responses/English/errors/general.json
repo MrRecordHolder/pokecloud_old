@@ -4,7 +4,9 @@
     
     "code": {
         "zero": "Error",
-        "one": "Usage"
+        "one": "Usage",
+        "two": "Example",
+        "three": "Arguments"
     },
 
     "response": {

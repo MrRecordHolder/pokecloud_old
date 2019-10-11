@@ -6,13 +6,18 @@ module.exports.command = {
     description: "By default, nest results are returned if it is located in the same state as the current server. To search worldwide use `, all` at the end of the command.",
     category: "Nest",
     usage: "<argument>, <search term>, [all]",
-    example: "state, georgia",
+    example: "pokemon, pikachu",
     permission: "**Role:** Any | **Channel:** Any",
     link: "https://pokecloud.gitbook.io/pokecloud/trainer-guides/search-nests",
     arguments: "`city` | `c`\n`state` | `s`\n`pokemon` | `pokémon` | `p`"
 }
 
 exports.run = (bot, message, args) => {
+
+    commandalias = this.command.aliases
+    commandusage = this.command.usage
+    commandexample = this.command.example
+    commandargs = this.command.arguments
 
     // split the args
     let output = args.join(" ").trim(" ").split(",")

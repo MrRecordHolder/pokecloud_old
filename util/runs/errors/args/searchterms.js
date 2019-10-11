@@ -12,14 +12,16 @@ exports.run = (bot, message) => {
     var embed = new Discord.RichEmbed()
         .setAuthor(errors.code.zero, errors.image)
         .setColor(errors.color)
-        .setTitle(errors.nestprop)    
+        .setTitle(errors.response.arg.nestprop)    
         .addField(errors.code.one, "```" + prefix + commandalias + " " + commandusage + "```")
+        .addField(errors.code.three, commandargs)
+        .addField(errors.code.two, "```" + prefix + commandalias + " " + commandexample + "```")
     return message.channel.send(embed).then(deleteIT => {
         if(cleanreplies === true) {               
-            deleteIT.delete(times.thirtysec)
+            deleteIT.delete(times.twominutes)
         } else { // if clean replies is false and current channel is the nest channel
             if(message.channel.id === nestchannel) {
-                message.delete(times.thirtysec).catch(err => {
+                message.delete(times.twominutes).catch(err => {
                     console.log(err + "\nerrors -> permissions -> missingnestN.js")
                 });
             };

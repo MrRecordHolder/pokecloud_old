@@ -10,5 +10,10 @@
         "description": "Seit der letzten Migration wurden keine Pokemon gemeldet. Besuche den Park und berichte , was du gefunden hast!"
     },
     "type": "Type",
-    "boost": "Boost"
+    "boost": "Boost",
+
+    "search": {
+        "worldwide": "Reported & Unreported Worldwide",
+        "statewide": "Reported Statewide"
+    }
 }

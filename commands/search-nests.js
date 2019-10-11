@@ -69,9 +69,10 @@ exports.run = (bot, message, args) => {
             }
         } else {
             statewidesearch = usersearch.filter(v => v.location.state === serverstate);
-            eachnest = statewidesearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-            embed.setTitle("Statewide City Search: " + nestpropvalue)
-            embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+            reportedstatewide = statewidesearch.filter(v => v.pokemon.current.name !== "?")
+            eachnest = reportedstatewide.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
+            embed.setTitle("Reported Statewide Search: " + nestpropvalue)
+            embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
         }
         embed.setColor("RANDOM")
         embed.setDescription(eachnest.sort().slice(0, 10))
@@ -88,7 +89,7 @@ exports.run = (bot, message, args) => {
                         embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
                     }
                 } else {                    
-                    embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+                    embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
                 }
                 message.channel.send(embed);
             }
@@ -122,7 +123,7 @@ exports.run = (bot, message, args) => {
                             }
                         } else {                    
                             embed.setTitle("Statewide City Search: " + nestpropvalue)
-                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
                         }
                         bot.users.get(theuser).send(embed)
 
@@ -136,7 +137,7 @@ exports.run = (bot, message, args) => {
                                         embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
                                     }
                                 } else {                    
-                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}, ${serverstate}`)
+                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
                                 }
                                 bot.users.get(theuser).send(embed)
                             }

@@ -1,11 +1,22 @@
----
-description: Community created data base for Pokemon GO.
----
+# PokeCloud
+A Pokemon GO Discord bot for nest management. Quickly create, display, report, update and search nests using easily designed commands. PokeCloud enables editing of the nest channel for all users of the admin team and one extra role for verified users of the community.
 
-# Home
+##### Check out the [guide here](https://pokecloud.gitbook.io/pokecloud/)
 
-![](.gitbook/assets/pokecloud-logo-sky.png)
+## Features
+* Fully hosted by the developer
+* Completely free with no limitations
+* Customizable settings
+* 3rd party bots
+    * Listens to other bots
+    * Compatible with Miscord
+* Supports English & German
+    * Pokemon input
+    * Responses
+* Timezone support for USA and UTC
+* Custom built Pokedex
 
-### What is PokeCloud?
-
-A _Pokemon GO_ based Discord bot that allows communities to create and manage public data. PokeCloud then creates a bridge between every server it's in by allowing Trainers to search the stored public data quickly using easily designed commands right from their local Discord.
+## Credits
+* Images provided by [TheArtificial](https://github.com/TheArtificial/pokemon-icons)
+* Nesting species confirmed by [TheSilphRoad](https://thesilphroad.com/catalog)
+* German translation by [@LegendRed01](https://github.com/LegendRed01)

@@ -1,0 +1,9 @@
+{
+    "image": "https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/GOerror.png?raw=true",
+    "color": "0xFF0000",
+
+    "error01": {
+        "name": "Error 01",
+        "issue": "The Fetched message does not exist."
+    }
+}

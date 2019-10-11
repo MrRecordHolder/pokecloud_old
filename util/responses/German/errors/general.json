@@ -1,0 +1,34 @@
+{
+    "image": "https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/GOerror.png?raw=true",
+    "color": "0xFF0000",
+    
+    "code": {
+        "zero": "Error",
+        "one": "Usage",
+        "two": "Example",
+        "three": "Arguments"
+    },
+
+    "response": {
+        "one": "does not exist",
+        "two": "is not a verified nesting species",
+
+        "arg": {
+            "channelid": "Must provide a channel id to set",
+            "city": "Must provide a city name to set",
+            "state": "Must provide a state name to set",
+            "region": "Must provide a region name to set",
+            "country": "Must provide a country name to set",
+            "nestprop": "Must provide a valid argument and input",
+            "nameANDpokemon": "Must provide the nest name and the Pokemon nesting"
+        },
+
+        "permission": {
+            "channel": "This command must be used in:",
+            "role": {
+                "a": "You must have the",
+                "b": "role to perform this action"
+            }
+        }
+    }
+}

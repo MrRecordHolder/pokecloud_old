@@ -1,0 +1,15 @@
+{
+    "description": "Migrations occur every 2 weeks. Some events can cause a early migration.",
+    "migrationTimeE": "8:00 PM",
+    "migrationTimeC": "7:00 PM",
+    "migrationTimeM": "6:00 PM",
+    "migrationTimeP": "5:00 PM",
+
+    "migrationTimeUTCn3": "9:00 PM",
+    "migrationTimeUTC0": "12:00 AM",
+    "migrationTimeUTC1": "1:00 AM",
+    "migrationTimeUTC2": "2:00 AM",
+    "migrationTimeUTC3": "3:00 AM",
+    "migrationTimeUTC4": "4:00 AM",
+    "migrationTimeUTC5": "5:30 AM"
+}

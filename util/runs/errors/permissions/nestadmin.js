@@ -13,7 +13,7 @@ exports.run = (bot, message) => {
         ADMIN.setColor(errors.color)
         ADMIN.setAuthor(errors.code.zero, errors.image)
         if(nestrole === undefined) {
-            ADMIN.setTitle(errors.permission.role.a + " `" + adminrole + "` " + errors.permission.role.b)
+            ADMIN.setTitle(errors.response.permission.role.a + " `" + adminrole + "` " + errors.permission.role.b)
         } else {
             ADMIN.setTitle(errors.response.permission.role.a + " `" + adminrole + "` | `" + nestrole + "` " + errors.response.permission.role.b)
         };

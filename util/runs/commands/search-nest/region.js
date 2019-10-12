@@ -3,8 +3,8 @@ exports.run = (bot, message) => {
         return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
     
-    usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
-
+    usersearch = bot.defaultNest.filter(v => v.location.region === nestpropvalue);
+    // check if the search is for all nests, if not return statewide
     if(output[2]) {
         sall = capitalize_Words(output[2]).trim(" ")
         if(sall === "All") {
@@ -13,12 +13,12 @@ exports.run = (bot, message) => {
             embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}.`)
         }
     } else {
-        reportedstatewide = usersearch.filter(v => v.pokemon.current.name !== "?")
+        statewidesearch = usersearch.filter(v => v.location.state === serverstate);
+        reportedstatewide = statewidesearch.filter(v => v.pokemon.current.name !== "?")
         eachnest = reportedstatewide.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
         embed.setTitle(basicNestLanguage.search.statewide)
-        embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${serverstate}`)
+        embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
     }
-        
     embed.setColor("RANDOM")
     embed.setDescription(eachnest.sort().slice(0, 10))
     // send first 10 nests
@@ -34,7 +34,7 @@ exports.run = (bot, message) => {
                     embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0,0).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
                 }
             } else {                    
-                embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${serverstate}`)
+                embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
             }
             message.channel.send(embed);
         }
@@ -68,7 +68,7 @@ exports.run = (bot, message) => {
                             }
                         } else {                    
                             embed.setTitle(basicNestLanguage.search.statewide)
-                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${serverstate}`)
+                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
                         }
                         bot.users.get(theuser).send(embed)
 
@@ -82,7 +82,7 @@ exports.run = (bot, message) => {
                                         embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
                                     }
                                 } else {                    
-                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${serverstate}`)
+                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} ${basicNestLanguage.search.footer.a} ${eachnest.length} ${basicNestLanguage.search.footer.b} ${nestpropvalue}`)
                                 }
                                 bot.users.get(theuser).send(embed)
                             }

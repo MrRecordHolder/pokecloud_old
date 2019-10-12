@@ -14,7 +14,6 @@ module.exports.command = {
 }
 
 exports.run = (bot, message, args) => {
-
     // require guildSettings
     const adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
     
@@ -41,8 +40,7 @@ exports.run = (bot, message, args) => {
     // sort all keys
     bot.defaultNest.keyArray().sort().forEach(key =>{
         
-        
-        // ensure the nest is created by the currrent server
+        // ensure the nest is created by the current server
         if(bot.defaultNest.get(key, `serverid`) === message.guild.id) {
 
             // require defaultNest

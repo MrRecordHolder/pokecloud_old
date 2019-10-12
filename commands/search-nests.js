@@ -23,7 +23,7 @@ exports.run = (bot, message, args) => {
     theuser = message.author.id
 
     // split the args
-    let output = args.join(" ").trim(" ").split(",")
+    output = args.join(" ").trim(" ").split(",")
 
     // check for nest property
     if(!output[0]) {
@@ -46,216 +46,26 @@ exports.run = (bot, message, args) => {
     nestpropvalue = capitalize_Words(output[1]).trim(" ")
 
     // require guildSettings
-    const serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     serverstate = bot.guildSettings.get(message.guild.id, 'location.state')
 
     // require per language responses
-    const basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
+    basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
 
     // create embed
-    var embed = new Discord.RichEmbed()
+    embed = new Discord.RichEmbed()
 
 
     //////////////// check for valid arguments
 
     if(nestprop === "City" || nestprop === "C") {
-        usersearch = bot.defaultNest.filter(v => v.location.city === nestpropvalue);
-
-        
-        // check if the search is for all nests, if not return statewide
-        if(output[2]) {
-            sall = capitalize_Words(output[2]).trim(" ")
-            if(sall === "All") {
-                eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-                embed.setTitle(basicNestLanguage.search.worldwide)
-                embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
-            }
-        } else {
-            statewidesearch = usersearch.filter(v => v.location.state === serverstate);
-            reportedstatewide = statewidesearch.filter(v => v.pokemon.current.name !== "?")
-            eachnest = reportedstatewide.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-            embed.setTitle(basicNestLanguage.search.statewide)
-            embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
-        }
-        embed.setColor("RANDOM")
-        embed.setDescription(eachnest.sort().slice(0, 10))
-        // send first 10 nests
-        message.channel.send(embed);
-
-        // wait then send nests 11-20
-        setTimeout(function(){
-            if(eachnest.length > 10) {
-                embed.setTitle("")
-                embed.setDescription(eachnest.sort().slice(10, 20))
-                if(output[2]) {
-                    if(sall === "All") {
-                        embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
-                    }
-                } else {                    
-                    embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
-                }
-                message.channel.send(embed);
-            }
-        }, 1500);
-
-        // react to see more via private message
-        setTimeout(function(){
-            if(eachnest.length > 20) {
-            embed.description.length = 0
-            embed.setTitle("Would you like to see more nests?")
-            embed.setDescription("")
-            embed.setFooter("👍 = Send results in private message | ❌ = Cancel")
-            message.channel.send(embed).then(message => {
-                message.react('👍').then(() => message.react('❌'));
-
-                const filter = (reaction, user) => {
-                    return ['👍', '❌'].includes(reaction.emoji.name) && user.id === theuser;
-                };
-                
-                message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-            
-                    if (reaction.emoji.name === '👍') {
-                        message.delete();
-                        embed.setDescription(eachnest.sort().slice(20, 30))
-                        if(output[2]) {
-                            if(sall === "All") {
-                                embed.setTitle(basicNestLanguage.search.worldwide)
-                                embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
-                            }
-                        } else {                    
-                            embed.setTitle(basicNestLanguage.search.statewide)
-                            embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
-                        }
-                        bot.users.get(theuser).send(embed)
-
-                        // wait then send nests 31-40
-                        setTimeout(function(){
-                            if(eachnest.length > 10) {
-                                embed.setTitle("")
-                                embed.setDescription(eachnest.sort().slice(30, 40))
-                                if(output[2]) {
-                                    if(sall === "All") {
-                                        embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue} worldwide`)
-                                    }
-                                } else {                    
-                                    embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} reported nests in ${nestpropvalue}, ${serverstate}`)
-                                }
-                                bot.users.get(theuser).send(embed)
-                            }
-                        }, 1500);
-                    } else {
-                        // cancel the message
-                        message.delete();
-                    }
-                })
-                .catch(collected => {
-                    // no reaction made
-                    message.delete();
-                });
-            })
-        }
-        }, 2300);
+        let snCity = require(`../util/runs/commands/search-nest/city.js`);
+        return snCity.run(bot, message);
     }
 
-
-
-
-
     if(nestprop === "State" || nestprop === "S") {
-        usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
-        eachnest = usersearch.map(key => [`📍 [**${key.name}**](${key.location.maps.google}) - ${key.pokemon.current.name}`])
-           
-        embed.setTitle(basicNestLanguage.search.statewide)
-        embed.setFooter(`${eachnest.sort().slice(0, 0).length} - ${eachnest.sort().slice(0, 10).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-        embed.setColor("RANDOM")
-        embed.setDescription(eachnest.sort().slice(0, 10))
-        // send first 10 nests
-        message.channel.send(embed);
-
-        // wait then send nests 11-20
-        setTimeout(function(){
-            if(eachnest.length > 10) {
-                embed.setTitle("")
-                embed.setDescription(eachnest.sort().slice(10, 20))
-                embed.setFooter(`${eachnest.sort().slice(0, 11).length} - ${eachnest.sort().slice(0, 20).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-                
-                message.channel.send(embed);
-            }
-        }, 1500);
-
-        // react to see more via private message
-        setTimeout(function(){
-            if(eachnest.length > 20) {
-            embed.description.length = 0
-            embed.setTitle("Would you like to see more nests?")
-            embed.setDescription("")
-            embed.setFooter("👍 = Send results in private message | ❌ = Cancel")
-            message.channel.send(embed).then(message => {
-                message.react('👍').then(() => message.react('❌'));
-
-                const filter = (reaction, user) => {
-                    return ['👍', '❌'].includes(reaction.emoji.name) && user.id === theuser;
-                };
-                
-                message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-            
-                    if (reaction.emoji.name === '👍') {
-                        message.delete();
-                        usersearch = bot.defaultNest.filter(v => v.location.state === nestpropvalue);
-
-                        // page 1
-                        embed.setTitle(basicNestLanguage.search.statewide)
-                        embed.setFooter(`${eachnest.sort().slice(0, 21).length} - ${eachnest.sort().slice(0, 30).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-                        embed.setColor("RANDOM")
-                        embed.setDescription(eachnest.sort().slice(20, 30))
-                        bot.users.get(theuser).send(embed);
-
-                        // page 2
-                        setTimeout(function(){
-                            if(eachnest.length > 30) {
-                                embed.setTitle("")
-                                embed.setDescription(eachnest.sort().slice(30, 40))
-                                embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-                                bot.users.get(theuser).send(embed);
-                            }
-                        }, 1500);
-
-                        // page 3
-                        setTimeout(function(){
-                            if(eachnest.length > 40) {
-                                embed.setTitle("")
-                                embed.setDescription(eachnest.sort().slice(30, 40))
-                                embed.setFooter(`${eachnest.sort().slice(0, 31).length} - ${eachnest.sort().slice(0, 40).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-                                bot.users.get(theuser).send(embed);
-                            }
-                        }, 1500);
-
-                        // page 3
-                        setTimeout(function(){
-                            if(eachnest.length > 50) {
-                                embed.setTitle("")
-                                embed.setDescription(eachnest.sort().slice(40, 50))
-                                embed.setFooter(`${eachnest.sort().slice(0, 41).length} - ${eachnest.sort().slice(0, 50).length} of ${eachnest.length} total nests in ${nestpropvalue}`)
-                                bot.users.get(theuser).send(embed);
-                            }
-                        }, 1500);
-
-                    } else {
-                        // cancel the message
-                        message.delete();
-                    }
-                })
-                .catch(collected => {
-                    // no reaction made
-                    message.delete();
-                });
-            })
-        }
-        }, 2300);
+        let snState = require(`../util/runs/commands/search-nest/state.js`);
+        return snState.run(bot, message);
     }
 
 

@@ -21,11 +21,11 @@ exports.run = (bot, message) => {
 
     // get pokedex file
     try {
-        pokedex = require(`../pokedex/${serverlanguage}/${nestpropvalue}.json`)
+        pokedex = require(`../../../../pokedex/${serverlanguage}/${nestpropvalue}.json`)
     } catch {
         // remove
         pokemonName = nestpropvalue
-        let dontNest = require(`../util/runs/errors/pokemon/dontnest`);
+        let dontNest = require(`../../../../util/runs/errors/pokemon/dontnest`);
         return dontNest.run(bot, message);
     }
 

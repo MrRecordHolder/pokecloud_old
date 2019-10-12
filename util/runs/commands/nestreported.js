@@ -12,7 +12,7 @@ exports.run = (bot, message) => {
     var embed = new Discord.RichEmbed()
         embed.setAuthor(success.code.zero, success.image)
         embed.setColor(success.color)
-        embed.setTitle(nestPokemon + " " + success.response.one + " " + nestName)
+        embed.setTitle(nestPokemon + " " + success.response.one.a + " " + nestName + " " + success.response.one.b)
 
 
         // pokemon info

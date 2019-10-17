@@ -11,7 +11,7 @@ exports.run = (bot, message) => {
     var embed = new Discord.RichEmbed()
         embed.setColor(errors.color)
         embed.setAuthor(errors.code.zero, errors.image)
-        embed.setTitle(pokemonName + " " + errors.respose.three)
+        embed.setTitle(pokemonName + " " + errors.response.three)
     return message.channel.send({embed: embed}).then(deleteIT => {
         if(cleanreplies === true) {               
             deleteIT.delete(times.thirtysec)

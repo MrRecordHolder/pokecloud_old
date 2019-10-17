@@ -3,13 +3,13 @@
     "color": "0x00C400",
     
     "code": {
-        "zero": "Success"
+        "zero": "Erfolg"
     },
 
     "response": {
         "one": {
-            "a": "has been reported at",
-            "b": ""
+            "a": "wurde im Nest",
+            "b": "gemeldet"
         }
     }
 }

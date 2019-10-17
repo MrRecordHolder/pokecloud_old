@@ -1,0 +1,13 @@
+{
+    "name": "Stunky",
+    "shiny": false,
+    "dex": "434",
+    "type": {
+        "primary": "Poison",
+        "secondary": "Dark"
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": "Fog"
+    }
+}

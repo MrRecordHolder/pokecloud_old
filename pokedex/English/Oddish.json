@@ -1,6 +1,6 @@
 {
     "name": "Oddish",
-    "shiny": false,
+    "shiny": true,
     "dex": "043",
     "type": {
         "primary": "Grass",

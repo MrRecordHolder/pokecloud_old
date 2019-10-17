@@ -1,0 +1,13 @@
+{
+    "name": "Buneary",
+    "shiny": true,
+    "dex": "427",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

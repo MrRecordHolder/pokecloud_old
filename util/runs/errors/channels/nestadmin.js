@@ -13,7 +13,7 @@ exports.run = (bot, message) => {
     var NEST = new Discord.RichEmbed()
         NEST.setColor(errors.color)
         NEST.setAuthor(errors.code.zero, errors.image)
-        NEST.setTitle(errors.permission.channel)
+        NEST.setTitle(errors.response.permission.channel)
         NEST.setDescription("🔐<#" + adminchannel + "> 🔰 <#" + nestchannel + ">")
     return message.channel.send({embed: NEST}).then(deleteIT => {
         if(cleanreplies === true) {               

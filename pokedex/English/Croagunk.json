@@ -1,0 +1,13 @@
+{
+    "name": "Croagunk",
+    "shiny": false,
+    "dex": "453",
+    "type": {
+        "primary": "Poison",
+        "secondary": "Fighting"
+    },
+    "weatherboost": {
+        "primary": "Cloudy",
+        "secondary": ""
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Kricketot",
+    "shiny": false,
+    "dex": "401",
+    "type": {
+        "primary": "Bug",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "Rain",
+        "secondary": ""
+    }
+}

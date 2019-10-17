@@ -12,7 +12,7 @@ exports.run = (bot, message) => {
     var embed = new Discord.RichEmbed()
         embed.setAuthor(success.code.zero, success.image)
         embed.setColor(success.color)
-        embed.setTitle(nestPokemon + " " + success.response.one + " " + nestName)
+        embed.setTitle(nestPokemon + " " + success.response.one.a + " " + nestName + " " + success.response.one.b)
 
 
         // pokemon info
@@ -31,7 +31,7 @@ exports.run = (bot, message) => {
                 if(pokemon.type.secondary === "") {
                     embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
                 } else {
-                    embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.typ}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
+                    embed.addField("#" + pokemon.dex + " " + pokemon.name, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
                 }                    
             }
         }

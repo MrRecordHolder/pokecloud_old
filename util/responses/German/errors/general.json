@@ -4,30 +4,30 @@
     
     "code": {
         "zero": "Error",
-        "one": "Usage",
-        "two": "Example",
-        "three": "Arguments"
+        "one": "Nutzung",
+        "two": "Beispiele",
+        "three": "Argumente"
     },
 
     "response": {
-        "one": "does not exist",
-        "two": "is not a verified nesting species",
+        "one": "wurde nicht gefunden",
+        "two": "ist kein nachgewiesenes nestendes Pokemon",
 
         "arg": {
-            "channelid": "Must provide a channel id to set",
-            "city": "Must provide a city name to set",
-            "state": "Must provide a state name to set",
-            "region": "Must provide a region name to set",
-            "country": "Must provide a country name to set",
-            "nestprop": "Must provide a valid argument and input",
-            "nameANDpokemon": "Must provide the nest name and the Pokemon nesting"
+            "channelid": "Zum Einstellen muss eine Kanal-ID angegeben werden",
+            "city": "Zum Einstellen muss eine Stadt angegeben werden",
+            "state": "Zum Einstellen muss ein Bundesland angegeben werden",
+            "region": "Zum Einstellen muss ein Regionsname angegeben werden",
+            "country": "Zum Einstellen muss ein Land angegeben werden",
+            "nestprop": "Die Argumente und die Eingabe müssen gültig sein",
+            "nameANDpokemon": "Der Nestnamen sowie das Nestende Pokemon müssen angeben werden"
         },
 
         "permission": {
-            "channel": "This command must be used in:",
+            "channel": "Das Ausführen diesen Befehls ist nur möglich im Kanal:",
             "role": {
-                "a": "You must have the",
-                "b": "role to perform this action"
+                "a": "Du brauchst die",
+                "b": "Rolle, um diesen Befehl auszuführen"
             }
         }
     }

@@ -19,7 +19,6 @@ commands/set-admin-role.js
 commands/set-admin-channel.js
 commands/send-to-all-servers.js
 commands/revert-migration.js
-commands/report-migration.js
 commands/reload.js
 commands/nickname.js
 commands/nests.js

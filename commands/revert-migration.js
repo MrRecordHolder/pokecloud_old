@@ -74,7 +74,7 @@ exports.run = (bot, message) => {
                     // clear pokemon info
                     embed.fields.length = 0
                     // pokemon info
-                    if(pokemonName === "?") {
+                    if(previouspogo === "?") {
                         embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                         embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
                     } else {

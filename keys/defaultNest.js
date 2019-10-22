@@ -31,6 +31,7 @@ const defaultNest = {
         }
     },
     messageid: "",
+    notes: "",
     servershare: {
         serverid: "",
         messageid: ""

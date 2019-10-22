@@ -12,6 +12,10 @@
     },
     "type": "Type",
     "boost": "Boost",
+    "city": "City",
+    "state": "State",
+    "region": "Region",
+    "country": "Country",
 
     "search": {
         "worldwide": "Reported & Unreported Worldwide",

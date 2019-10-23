@@ -11,7 +11,6 @@ commands/set-region.js
 commands/set-prefix.js
 commands/set-nest-role.js
 commands/set-nest-channel.js
-commands/set-migration-date.js
 commands/set-language.js
 commands/set-country.js
 commands/set-city.js

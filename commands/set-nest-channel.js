@@ -32,9 +32,6 @@ exports.run = (bot, message, args) => {
     // require guildSettings
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
 
-    // require guildSettings
-    const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
-
     // check for admin channel
     if(message.channel.id !== adminchannel) {
         let channelcheck = require(`../util/runs/errors/channels/admin.js`);

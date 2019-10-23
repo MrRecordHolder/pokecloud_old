@@ -13,7 +13,7 @@ exports.run = (bot, message) => {
     var embed = new Discord.RichEmbed()
         .setAuthor(errors.code.zero, errors.image)
         .setColor(errors.color)
-        .setTitle(errors.arg.channelid)    
+        .setTitle(errors.response.arg.channelid)    
         .addField(errors.code.one, "```" + prefix + commandalias + " " + commandusage + "```")
     return message.channel.send(embed).then(deleteIT => {
         if(cleanreplies === true) {               

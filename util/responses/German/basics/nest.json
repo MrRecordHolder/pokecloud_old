@@ -12,14 +12,14 @@
     },
     "type": "Type",
     "boost": "Boost",
-    "city": "City",
-    "state": "State",
+    "city": "Stadt",
+    "state": "Bundesland",
     "region": "Region",
-    "country": "Country",
+    "country": "Land",
 
     "search": {
-        "worldwide": "Reported & Unreported Worldwide",
-        "statewide": "Reported Statewide",
+        "worldwide": "Weltweit nicht gemeldet & gemeldet",
+        "statewide": "Bundeslandesweit gemeldet",
 
         "footer": {
             "a": "von insgesamt",

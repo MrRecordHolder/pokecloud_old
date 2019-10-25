@@ -2,13 +2,13 @@
     "channelID": {
         "admin": {
             "title": {
-                "a": "Admin channel id updated to",
+                "a": "Admin channel updated",
                 "b": ""
             }
         },
         "nest": {
             "title": {
-                "a": "Nest channel id updated to",
+                "a": "Nest channel updated",
                 "b": ""
             }
         }

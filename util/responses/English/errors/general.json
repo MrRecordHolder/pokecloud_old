@@ -25,6 +25,8 @@
 
         "permission": {
             "channel": "This command must be used in:",
+            "channelid": "Must provide the channel id to set",
+            "nochannelfound": "That channel does not exist on this server",
             "role": {
                 "a": "You must have the",
                 "b": "role to perform this action"

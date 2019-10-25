@@ -19,10 +19,8 @@ const guildSettings = {
         nest: "",
         log: "",
         city: {
-            one: {
-                channelid: "",
-                name: ""
-            }
+            one: "",
+            two: "",
         }
     },
     roles: {

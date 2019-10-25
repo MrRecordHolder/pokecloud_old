@@ -25,6 +25,8 @@
 
         "permission": {
             "channel": "Das Ausführen diesen Befehls ist nur möglich im Kanal:",
+            "channelid": "Must provide the channel id to set",
+            "nochannelfound": "That channel does not exist on this server",
             "role": {
                 "a": "Du brauchst die",
                 "b": "Rolle, um diesen Befehl auszuführen"

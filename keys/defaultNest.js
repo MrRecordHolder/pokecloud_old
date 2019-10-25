@@ -30,8 +30,9 @@ const defaultNest = {
             image: "https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/unreported.png?raw=true"
         }
     },
-    messageid: "",
     notes: "",
+    messageid: "",
+    channel: "",
     servershare: {
         serverid: "",
         messageid: ""

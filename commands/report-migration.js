@@ -63,6 +63,19 @@ exports.run = (bot, message) => {
             }
         }
     });
+
+    const migrationTagChannel = bot.guildSettings.get(message.guild.id, 'migration.tagchannel')
+    const migrationTagole = bot.guildSettings.get(message.guild.id, 'migration.tagrole')
+    const migrationTag = bot.guildSettings.get(message.guild.id, 'migration.tag')
+
+    if(migrationTag === true) {
+        var mtagembed = new Discord.RichEmbed()
+            .setColor("RANDOM")
+            .setTitle("A nest migration has been reported!")  
+            .setDescription("Head out to your local nests and reported back what you've discovered.")
+            .setFooter("Reported by")
+        bot.channels.get(migrationTagChannel).message.channel.send({embed: mtagembed})
+    };
     
     bot.defaultNest.keyArray().forEach(key =>{
         if(bot.defaultNest.get(key, `serverid`) === message.guild.id) {
@@ -75,8 +88,7 @@ exports.run = (bot, message) => {
 
             nestToEdit = bot.defaultNest.get(key, `messageid`)
             if(nestToEdit) {
-                let serverIDn = bot.defaultNest.get(key, 'serverid')
-                let serverNestChannel = bot.guildSettings.get(serverIDn, 'channels.nest')
+                let serverNestChannel = bot.defaultNest.get(key, 'channel')
                 // fetch the message
                 bot.channels.get(serverNestChannel).fetchMessage(nestToEdit).then(editEmbed => {               
                     defPogoImg = bot.defaultNest.get(key, `pokemon.current.image`)

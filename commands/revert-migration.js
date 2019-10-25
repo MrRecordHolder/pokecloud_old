@@ -66,8 +66,7 @@ exports.run = (bot, message) => {
             bot.defaultNest.set(key, previouspogoimg, `pokemon.current.image`)
             nestToEdit = bot.defaultNest.get(key, `messageid`)
             if(nestToEdit) {
-                let serverIDn = bot.defaultNest.get(key, 'serverid')
-                let serverNestChannel = bot.guildSettings.get(serverIDn, 'channels.nest')
+                let serverNestChannel = bot.defaultNest.get(key, 'channel')
                 bot.channels.get(serverNestChannel).fetchMessage(nestToEdit).then(editEmbed => {              
                     const { RichEmbed } = require ('discord.js');
                     const embed = new RichEmbed (editEmbed.embeds[0])

@@ -130,10 +130,14 @@ exports.run = (bot, message, args) => {
             // shiny emoji
             shinyEmoji = bot.emojis.find(emoji => emoji.name === `Icon_Shiny`)
 
+
             const messageid = bot.defaultNest.get(nestKey, 'messageid')
+            
 
             // fetch the message to edit
-            bot.channels.get(nestchannel).fetchMessage(messageid).then(editEmbed => {
+            let messagechannel = bot.defaultNest.get(nestKey, 'channel')
+        
+            bot.channels.get(messagechannel).fetchMessage(messageid).then(editEmbed => {
                 // edit the embed if it exist
                 if (editEmbed) {
                     const { RichEmbed } = require ('discord.js');
@@ -171,7 +175,6 @@ exports.run = (bot, message, args) => {
                 return nestreported.run(bot, message);
             }).catch(err => {
                 // embed not listed, so list it
-                console.log(err)
                 // require defaultNest
                 const google = bot.defaultNest.get(nestKey, 'location.maps.google')
                 const pokestops = bot.defaultNest.get(nestKey, 'pokestops')

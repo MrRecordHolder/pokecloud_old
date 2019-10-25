@@ -11,6 +11,12 @@
                 "a": "Nest channel updated",
                 "b": ""
             }
+        },
+        "city": {
+            "title": {
+                "a": "City nest channel updated",
+                "b": ""
+            }
         }
     },
     "city": {

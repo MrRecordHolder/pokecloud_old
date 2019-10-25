@@ -10,6 +10,16 @@
         "one": {
             "a": "wurde im Nest",
             "b": "gemeldet"
+        },
+
+        "updated": {
+            "a":"has been updated to",
+            "b": ""
+        },
+
+        "updatedby": {
+            "a": "updated by",
+            "b": ""
         }
     }
 }

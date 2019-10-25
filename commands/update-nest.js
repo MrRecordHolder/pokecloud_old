@@ -23,18 +23,6 @@ exports.run = (bot, message, args) => {
     let user = message.mentions.users.first() || message.author
     username = message.guild.member(user).displayName
 
-    //capitalize word function
-    function capitalize_Words(output) {
-        return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    }
- 
-    // generate new args
-    nestName = capitalize_Words(output[0])
-    
-
-    // generate nest key
-    nestKey = `${message.guild.id}-${nestName}`
-
     // require guildSettings
     serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
     // require per language responses
@@ -51,6 +39,20 @@ exports.run = (bot, message, args) => {
         return checkrole.run(bot, message);
     };
 
+    // split the args
+    output = args.join(" ").trim(" ").split(",")
+
+    //capitalize word function
+    function capitalize_Words(output) {
+        return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
+ 
+    // generate new args
+    nestName = capitalize_Words(output[0])
+
+    // generate nest key
+    nestKey = `${message.guild.id}-${nestName}`
+
     // require guildSettings
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
     nestchannel = bot.defaultNest.get(nestKey, 'channel')
@@ -61,8 +63,7 @@ exports.run = (bot, message, args) => {
         return channelcheck.run(bot, message);
     };
  
-    // split the args
-    output = args.join(" ").trim(" ").split(",")
+    
  
     // require guildSettings
     prefix = bot.guildSettings.get(message.guild.id, 'prefix')
@@ -82,7 +83,6 @@ exports.run = (bot, message, args) => {
             };
         });
     }
-    
  
     // if no property
     if(!output[1]) {
@@ -99,10 +99,6 @@ exports.run = (bot, message, args) => {
             };
         });
     }
-
-    nestProp = capitalize_Words(output[1]).trim(" ")
-    nestData = output[2].trim(" ")
-    nestDataCap = capitalize_Words(output[2]).trim(" ")
  
  
     // if nest property is not valid
@@ -122,6 +118,11 @@ exports.run = (bot, message, args) => {
             };
         });
     }
+
+    nestProp = capitalize_Words(output[1]).trim(" ")
+    nestData = output[2].trim(" ")
+    nestDataCap = capitalize_Words(output[2]).trim(" ")
+
     
 
     if(!bot.defaultNest.has(nestKey)) {

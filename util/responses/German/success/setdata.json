@@ -11,6 +11,12 @@
                 "a": "Nest-Kanal-ID aktualisiert auf",
                 "b": ""
             }
+        },
+        "city": {
+            "title": {
+                "a": "City nest channel updated",
+                "b": ""
+            }
         }
     },
     "city": {

@@ -14,7 +14,7 @@ const Discord = require("discord.js")
 const times = require("../util/data/times.json")
 
 exports.run = (bot, message, args) => {
-    const language = bot.defaultNest.get(message.guild.id, 'language')
+    const language = bot.guildSettings.get(message.guild.id, 'language')
     const errors = require(`../util/responses/${language}/errors/general.json`)
     const success = require(`../util/responses/${language}/success/general.json`)
 
@@ -41,11 +41,17 @@ exports.run = (bot, message, args) => {
     // generate channel id
     let output = args.join(" ").trim(" ")
 
+    // require guildSettings
+    serverlanguage = bot.guildSettings.get(message.guild.id, 'language')
+    // require per language responses
+    basicNestLanguage = require(`../util/responses/${serverlanguage}/basics/nest.json`)
+    nestLanguageSuccess = require(`../util/responses/${serverlanguage}/success/setdata.json`)
+
     if(output === undefined) {
         var norole = new Discord.RichEmbed()
             .setAuthor(errors.code.zero, errors.image)
             .setColor(errors.color)
-            .setTitle(`Must provide the channel id to set`)    
+            .setTitle(basicNestLanguage.response.permission.channelid)    
         return message.channel.send({embed: norole}).then(deleteIT => {
             if(cleanreplies === true) {               
                 deleteIT.delete(times.thirtysec)
@@ -59,7 +65,7 @@ exports.run = (bot, message, args) => {
         var embed = new Discord.RichEmbed()
             .setAuthor(success.code.zero, success.image)
             .setColor(success.color)
-            .setTitle(`This community's nest channel is now set to:`)
+            .setTitle(nestLanguageSuccess.channelID.nest.title.a)
             .setDescription(`<#${output}>`)
         message.channel.send({embed: embed}).then(deleteIT => {
             if(cleanreplies === true) {               
@@ -71,11 +77,11 @@ exports.run = (bot, message, args) => {
         var nochannel = new Discord.RichEmbed()
             .setAuthor(errors.code.zero, errors.image)
             .setColor(errors.color)
-            .setTitle(`That channel does not exist on this server`)    
+            .setTitle(basicNestLanguage.response.permission.nochannelfound)    
         return message.channel.send({embed: nochannel}).then(deleteIT => {
             if(cleanreplies === true) {               
                 deleteIT.delete(times.thirtysec)
             };
         });
-    } 
+    };
 }

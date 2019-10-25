@@ -2,7 +2,6 @@
 images/pokemon/en/025-pikachu-shiny@3x.png
 commands/create-nest.js
 commands/view-settings.js
-commands/update-nest.js
 commands/toogle-migration-tag.js
 commands/toggle-miscord.js
 commands/set-timezone.js

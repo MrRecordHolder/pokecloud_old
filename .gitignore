@@ -34,3 +34,4 @@ commands/botinfo.js
 commands/push-nest-update.js
 util/data/servers.json
 commands/test.js
+util/data/server.json

@@ -1,4 +1,4 @@
-{
+ {
     "image": "https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/check_mark.png?raw=true",
     "color": "0x00C400",
     
@@ -13,12 +13,12 @@
         },
 
         "updated": {
-            "a":"has been updated to",
-            "b": ""
+            "a":"wurde auf",
+            "b": "geupdated"
         },
 
         "updatedby": {
-            "a": "updated by",
+            "a": "geubdated von",
             "b": ""
         }
     }

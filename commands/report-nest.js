@@ -40,8 +40,12 @@ exports.run = (bot, message, args) => {
     const nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
 
+    const cityone = bot.guildSettings.get(message.guild.id, 'channels.city.one')
+    const citytwo = bot.guildSettings.get(message.guild.id, 'channels.city.two')
+    let chanID = message.channel.id
+
     // check for admin & nest channel
-    if(message.channel.id !== adminchannel && message.channel.id !== nestchannel) {
+    if(chanID !== nestchannel && chanID !== adminchannel && chanID !== cityone && chanID !== citytwo) {
         let checkchannel = require(`../util/runs/errors/channels/nestadmin.js`);
         return checkchannel.run(bot, message, args);
     };

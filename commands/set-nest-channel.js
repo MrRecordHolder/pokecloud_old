@@ -39,7 +39,7 @@ exports.run = (bot, message, args) => {
     };
 
     // generate channel id
-    let output = args.join(" ").trim(" ")
+    let output = args.join(" ").trim()
 
     // require guildSettings
     serverlanguage = bot.guildSettings.get(message.guild.id, 'language')

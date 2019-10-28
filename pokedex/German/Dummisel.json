@@ -1,0 +1,13 @@
+{
+    "name": "Dunsparce",
+    "shiny": false,
+    "dex": "206",
+    "type": {
+        "primary": "Normal",
+        "secondary": ""
+    },
+    "weatherboost": {
+        "primary": "PartlyCloudy",
+        "secondary": ""
+    }
+}

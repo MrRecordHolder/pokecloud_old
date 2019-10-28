@@ -1,18 +1,4 @@
-exports.run = (bot, message) => {
-
-    let mainserver = require(`../../../data/server.json`)
-    if(!bot.guilds.get(mainserver.home.id).members.get(message.author.id).roles.some(role => role.id === mainserver.patreon.supporter)) {
-    var patreon = new Discord.RichEmbed()
-            .setColor(errors.color)
-            .setAuthor("Error", errors.image)
-            .setTitle("Must be a Patreon supporter to use this feature")   
-        return message.channel.send({embed: patreon})
-        .then(deleteIT => {
-            deleteIT.delete(times.thirtysec)
-        });
-    };
-
-    
+exports.run = (bot, message) => {    
     // set new data value
     bot.defaultNest.set(nestKey, nestDataCap, 'alias')
     const alias = bot.defaultNest.get(nestKey, 'alias')

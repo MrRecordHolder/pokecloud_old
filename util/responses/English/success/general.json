@@ -14,7 +14,9 @@
 
         "updated": {
             "a":"has been updated to",
-            "b": ""
+            "b": "",
+            "c": "can now be refered to as",
+            "d": ""
         },
 
         "updatedby": {

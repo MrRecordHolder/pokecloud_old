@@ -53,6 +53,12 @@ exports.run = (bot, message, args) => {
     // generate nest key
     nestKey = `${message.guild.id}-${nestName}`
 
+    // if nest doesn't exist
+    if(!bot.defaultNest.has(nestKey)) {
+        nestKey = bot.defaultNest.findKey(val => val.alias === nestName);
+        nestName = bot.defaultNest.get(nestKey, 'name')
+    };
+
     // require guildSettings
     const adminchannel = bot.guildSettings.get(message.guild.id, 'channels.admin')
     nestchannel = bot.defaultNest.get(nestKey, 'channel')

@@ -6,8 +6,8 @@ module.exports.command = {
     usage: "<nest name>, <property>, <new value>",
     example: "hilton park, exgyms, 3",
     permission: "**Role:** Admin | **Channel:** Nest",
-    link: "https://github.com/MrRecordHolder/pokecloud/wiki/All-Commands#update-nest--un",
-    arguments: "`pokestops` | `gyms` | `exgyms` | `spawns` | `city` | `state` | `region` | `country` | `google` | `notes"
+    link: "https://pokecloud.gitbook.io/pokecloud/commands#update-nest",
+    arguments: "`alias` | `pokestops` | `gyms` | `exgyms` | `spawns` | `city` | `state` | `region` | `country` | `google` | `notes`"
 }
 
 Discord = require("discord.js")
@@ -63,8 +63,6 @@ exports.run = (bot, message, args) => {
         return channelcheck.run(bot, message);
     };
  
-    
- 
     // require guildSettings
     prefix = bot.guildSettings.get(message.guild.id, 'prefix')
  
@@ -102,7 +100,7 @@ exports.run = (bot, message, args) => {
  
  
     // if nest property is not valid
-    const validProp = ["pokestops","p", "gyms", "exgyms", "spawns", "notes", "city", "state", "region", "country", "alias", "google", "osm"];
+    const validProp = ["pokestops","p", "gyms", "exgyms", "spawns", "notes", "city", "state", "region", "country", "alias", "a", "google", "osm"];
 
     if(!validProp.some(word => output[1].includes(word)) ) {
         var embed = new Discord.RichEmbed()
@@ -159,6 +157,12 @@ exports.run = (bot, message, args) => {
      // if nest is created by current server
      if(serverid === message.guild.id) {
  
+        // alias
+        if(nestProp === "Alias" || nestProp === "A") {
+            let updateProp = require(`../util/runs/commands/update-nest/alias`);
+            return updateProp.run(bot, message);
+        }
+        
         // pokestops
         if(nestProp === "Pokestops" || nestProp === "P") {
             let updateProp = require(`../util/runs/commands/update-nest/pokestops`);

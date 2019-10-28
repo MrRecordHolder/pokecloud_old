@@ -179,6 +179,7 @@ exports.run = (bot, message, args) => {
             
             // ensure the nest is created by the current server
             if(bot.defaultNest.get(key, `serverid`) === message.guild.id) {
+                bot.defaultNest.set(key, nestchannel, 'channel')
 
                 // require nest messageid
                 const messagetodelete = bot.defaultNest.get(key, 'messageid')

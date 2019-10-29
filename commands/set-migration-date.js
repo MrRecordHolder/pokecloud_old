@@ -57,6 +57,10 @@ exports.run = (bot, message, args) => {
         });
     };
 
+    // assign & split args
+    let output = args.join(" ").trim(" ").split(",")
+    var newMonth = output[0]
+    var newDay = output[1]
 
     // format date
     var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -64,23 +68,8 @@ exports.run = (bot, message, args) => {
 
     // create current date
     var now = new Date();
-
-    if(timezone === "eastern") {
-        offset = -300;
-        today = new Date(now.getTime() + offset*60*1000);
-    } else {
-        offset = 120;
-        today = new Date(now.getTime() + offset*60*1000);
-    }
-
-    // assign & split args
-    let output = args.join(" ").trim(" ").split(",")
-    var newMonth = output[0]
-    var newDay = output[1]
-
-    // set new date
-    today.setFullYear('2019', newMonth, newDay)
-    today.setMonth(today.getMonth() - 1);
+    now.setMonth(newMonth - 1)
+    now.setDate(newDay)
 
     // require guildSettings
     const migmsgid = bot.guildSettings.get(message.guild.id, 'migration.messageid')
@@ -88,7 +77,7 @@ exports.run = (bot, message, args) => {
 
     const migrationTime = require(`../util/data/migrations/${timezone}`)
 
-    let newFullDate = days[today.getDay()] + " " + months[today.getMonth()] + ", " + today.getDate() + " at " + migrationTime.time
+    let newFullDate = days[now.getDay()] + " " + months[now.getMonth()] + ", " + now.getDate() + " at " + migrationTime.time
     bot.guildSettings.set(message.guild.id, newFullDate, 'migration.dates.next')
 
     // fetch & edit migration details message

@@ -242,6 +242,7 @@ exports.run = (bot, message, args) => {
                 message.channel.send(embed).then(message => {
                     // save the sent embed message id
                     bot.defaultNest.set(nestKey, message.channel.lastMessageID, "messageid")
+                    bot.defaultNest.set(nestKey, message.channel.id, 'channel')
                 });
             })
         }

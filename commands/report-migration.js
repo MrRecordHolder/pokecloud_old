@@ -141,6 +141,12 @@ exports.run = (bot, message) => {
         twoWeeks.setDate(twoWeeks.getDate() + 14);
     }
 
+    if(timezone === "Utc0") {
+        today = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Lisbon"}));
+        twoWeeks = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Lisbon"}));
+        twoWeeks.setDate(twoWeeks.getDate() + 14);
+    }
+    
     if(timezone === "Utc1") {
         today = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
         twoWeeks = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));

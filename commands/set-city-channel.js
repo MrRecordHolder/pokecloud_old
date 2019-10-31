@@ -79,16 +79,6 @@ exports.run = (bot, message, args) => {
         if(output[0] === "Two" || output[0] === "2") {
             bot.guildSettings.set(message.guild.id, "", "channels.city.two")
         }
-        // specified channel not found
-        var nochannel = new Discord.RichEmbed()
-            .setAuthor(errors.code.zero, errors.image)
-            .setColor(errors.color)
-            .setTitle(errors.response.permission.nochannelfound)    
-        return message.channel.send({embed: nochannel}).then(deleteIT => {
-            if(cleanreplies === true) {               
-                deleteIT.delete(times.thirtysec)
-            };
-        });
     }
     
     let citychannelid = output[1].trim();

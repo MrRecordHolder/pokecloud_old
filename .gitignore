@@ -18,7 +18,6 @@ commands/send-to-all-servers.js
 commands/reload.js
 commands/nickname.js
 commands/nests.js
-commands/list-nest.js
 commands/help.js
 commands/delete-nest.js
 events/ready.js

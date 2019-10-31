@@ -63,19 +63,6 @@ exports.run = (bot, message) => {
             }
         }
     });
-
-    const migrationTagChannel = bot.guildSettings.get(message.guild.id, 'migration.tagchannel')
-    const migrationTagole = bot.guildSettings.get(message.guild.id, 'migration.tagrole')
-    const migrationTag = bot.guildSettings.get(message.guild.id, 'migration.tag')
-
-    if(migrationTag === true) {
-        var mtagembed = new Discord.RichEmbed()
-            .setColor("RANDOM")
-            .setTitle("A nest migration has been reported!")  
-            .setDescription("Head out to your local nests and reported back what you've discovered.")
-            .setFooter("Reported by")
-        bot.channels.get(migrationTagChannel).message.channel.send({embed: mtagembed})
-    };
     
     bot.defaultNest.keyArray().forEach(key =>{
         if(bot.defaultNest.get(key, `serverid`) === message.guild.id) {

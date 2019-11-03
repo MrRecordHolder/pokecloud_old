@@ -4,7 +4,7 @@ module.exports.command = {
     description: "Add a Pokemon to PokeCloud's Pokedex. Must be added using the English name.",
     category: "Pokedex",
     usage: "<pokemon>, <dex>, <primary type>, <primary boost>, [secondary type], [secondary boost]",
-    example: "bulbasaur, 001, grass, sunny, poision, cloudy",
+    example: "bulbasaur, 001, grass, sunny, poison, cloudy",
     permission: "**Role:** Pokedex | **Channel:** Any",
     arguments: ""
 }
@@ -28,32 +28,70 @@ exports.run = (bot, message, args) => {
         });
     };
 
+    let userimage = message.author.avatarURL
+    let user = message.mentions.users.first() || message.author
+    const username = message.guild.member(user).displayName
 
-    let output = args.join(" ").trim(" ").split(",")
+
+    let output = args.join(" ").trim().split(",")
+    function capitalize_Words(output) {
+        return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
 
     // create data props
-    let name = output[0]
-    let dex = output[1]
-    let typeP = output[2]
-    let boostP = output[3]
-    let typeS = output[4]
-    let boostS = output[5]
+    let pokedex_english = capitalize_Words(output[0]).trim()
+    let pokedex_english_low = output[0].toLowerCase().trim()
+    let pokedex_dex = output[1].trim()
+    let pokedex_type_p = capitalize_Words(output[2]).trim()
+    let pokedex_boost_p = capitalize_Words(output[3]).trim()
+
+    basicNestLanguage = require(`../util/responses/English/basics/nest.json`);
 
     // create new Pokedex with default props
-    function createdex(name, object) {
-        bot.Pokedex.ensure(name, object)
-    } createdex(name, Pokedex)
+    function createdex(pokedex_english, object) {
+        bot.Pokedex.ensure(pokedex_english, object)
+    } createdex(pokedex_english, Pokedex);
+
 
     // set new data
-    bot.Pokedex.set(name, name, 'name.english')
-    bot.Pokedex.set(name, dex, 'dex')
-    bot.Pokedex.set(name, typeP, 'type.primary')
-    bot.Pokedex.set(name, boostP, 'boost.primary')
+    bot.Pokedex.set(pokedex_english, pokedex_english, 'name.english')
+    bot.Pokedex.set(pokedex_english, pokedex_dex, 'dex')
+    bot.Pokedex.set(pokedex_english, pokedex_type_p, 'type.primary')
+    bot.Pokedex.set(pokedex_english, pokedex_boost_p, 'boost.primary')
 
-    if(typeS) {
-        bot.Pokedex.set(name, typeS, 'type.secondary')
+    if(output[4]) {
+        pokedex_type_s = capitalize_Words(output[4]).trim()
+        bot.Pokedex.set(pokedex_english, pokedex_type_s, 'type.secondary')
+        SecondaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_s}`)
     }
-    if(boostS) {
-        bot.Pokedex.set(name, boostS, 'boost.secondary')
+    if(output[5]) {
+        pokedex_boost_s = capitalize_Words(output[5]).trim()
+        bot.Pokedex.set(pokedex_english, pokedex_boost_s, 'boost.secondary')
+        secondaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_s}`)
     }  
+
+    // type emoji
+    primaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_p}`)
+
+    // weather boost emoji
+    primaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_p}`)
+    
+    // shiny emoji
+    shinyEmoji = bot.emojis.find(emoji => emoji.name === `Icon_Shiny`)
+
+    var embed = new Discord.RichEmbed()
+        embed.setAuthor("Success", success.image)
+        embed.setColor(success.color)
+        embed.setTitle(pokedex_english + " added to the Pokedex")
+        embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokedex_dex}-${pokedex_english_low}@3x.png?raw=true`)
+        if(!output[4]) {
+            embed.addField("#" + pokedex_dex + " " + pokedex_english, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokedex_type_p}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokedex_boost_p}`)
+        } else {
+            embed.addField("#" + pokedex_dex + " " + pokedex_english, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokedex_type_p} ${SecondaryTypeEmoji} ${pokedex_type_s}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokedex_boost_p} ${secondaryweatherboostemoji} ${pokedex_boost_s}`)
+        };    
+        embed.setFooter(username, userimage)
+    return message.channel.send({embed: embed}).then(deleteIT => {
+        bot.channels.get('639499414981050398').send({embed: embed});
+        deleteIT.delete(times.thirtysec)
+    });
 };

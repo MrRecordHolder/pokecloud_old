@@ -1,6 +1,6 @@
 {
     "name": "Poliwag",
-    "shiny": false,
+    "shiny": true,
     "dex": "060",
     "type": {
         "primary": "Water",

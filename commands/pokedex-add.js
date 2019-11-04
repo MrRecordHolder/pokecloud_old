@@ -45,6 +45,13 @@ exports.run = (bot, message, args) => {
     let pokedex_type_p = capitalize_Words(output[2]).trim()
     let pokedex_boost_p = capitalize_Words(output[3]).trim()
 
+    if(pokedex_boost_p === "Partly Cloudy") {
+        pokedex_boost_p = "PartlyCloudy"
+    }
+    if(pokedex_boost_s === "Partly Cloudy") {
+        pokedex_boost_s = "PartlyCloudy"
+    }
+
     basicNestLanguage = require(`../util/responses/English/basics/nest.json`);
 
     // create new Pokedex with default props

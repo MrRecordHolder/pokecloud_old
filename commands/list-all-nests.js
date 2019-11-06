@@ -247,15 +247,17 @@ exports.run = (bot, message, args) => {
                     embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                     embed.addField(basicNestLanguage.unreported.title, basicNestLanguage.unreported.description)
                 } else {
-                    const cpokemonimage = bot.defaultNest.get(key, 'pokemon.current.image')
-                    embed.setThumbnail(cpokemonimage)
                     if(pokemon.shiny === true) {
+                        const cpokemonimage = `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/${pokemon.dex}-${cpokemonname.toLowerCase()}-shiny@3x.png?raw=true`
+                        embed.setThumbnail(cpokemonimage)
                         if(pokemon.type.secondary === "") {
                             embed.addField("#" + pokemon.dex + " " + cpokemonname + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
                         } else {
                             embed.addField("#" + pokemon.dex + " " + cpokemonname + " " + shinyEmoji, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary} ${SecondaryTypeEmoji} ${pokemon.type.secondary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary} ${secondaryweatherboostemoji} ${pokemon.weatherboost.secondary}`)
                         }
                     } else {
+                        const cpokemonimage = `https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/${pokemon.dex}-${cpokemonname.toLowerCase()}@3x.png?raw=true`
+                        embed.setThumbnail(cpokemonimage)
                         if(pokemon.type.secondary === "") {
                             embed.addField("#" + pokemon.dex + " " + cpokemonname, `${basicNestLanguage.type}: ${primaryTypeEmoji} ${pokemon.type.primary}\n${basicNestLanguage.boost}: ${primaryweatherboostemoji} ${pokemon.weatherboost.primary}`)
                         } else {

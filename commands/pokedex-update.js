@@ -102,12 +102,14 @@ exports.run = (bot, message, args) => {
         bot.Pokedex.set(Pokedex_english, value, 'name.german');
         var embed = new Discord.RichEmbed()
             embed.setColor(success.color)
-            embed.setTitle(Pokedex_english + "'s German name has been updated to " + value)
+            embed.setTitle(Pokedex_english + "'s German name has been updated")
+            embed.setDescription(`English: ${Pokedex_english}\nGerman: ${value}`)
             if(Pokedex_shiny === true) {
                 embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${Pokedex_dex}-${Pokedex_english.toLowerCase()}-shiny@3x.png?raw=true`);
             } else {
                 embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${Pokedex_dex}-${Pokedex_english.toLowerCase()}@3x.png?raw=true`);
             };
+            embed.setFooter(username, userimage)
         return message.channel.send({embed: embed}).then(deleteIT => {
             bot.channels.get(mainserver.home.pokedex).send({embed: embed});
             deleteIT.delete(times.thirtysec)
@@ -119,6 +121,7 @@ exports.run = (bot, message, args) => {
         var embed = new Discord.RichEmbed()
             embed.setColor(success.color)
             embed.setTitle(Pokedex_english + "'s French name has been updated to " + value)
+            embed.setDescription(`English: ${Pokedex_english}\nFrench: ${value}`)
             if(Pokedex_shiny === true) {
                 embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${Pokedex_dex}-${Pokedex_english.toLowerCase()}-shiny@3x.png?raw=true`);
             } else {
@@ -136,6 +139,7 @@ exports.run = (bot, message, args) => {
         var embed = new Discord.RichEmbed()
             embed.setColor(success.color)
             embed.setTitle(Pokedex_english + "'s Japanese name has been updated to " + value)
+            embed.setDescription(`English: ${Pokedex_english}\nJapanese: ${value}`)
             if(Pokedex_shiny === true) {
                 embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${Pokedex_dex}-${Pokedex_english.toLowerCase()}-shiny@3x.png?raw=true`);
             } else {

@@ -59,9 +59,7 @@ exports.run = (bot, message, args) => {
     if(pokedex_boost_p === "Partly Cloudy") {
         pokedex_boost_p = "PartlyCloudy"
     }
-    if(pokedex_boost_s === "Partly Cloudy") {
-        pokedex_boost_s = "PartlyCloudy"
-    }
+    
 
     let basicNestLanguage = require(`../util/responses/English/basics/nest.json`);
 
@@ -84,6 +82,9 @@ exports.run = (bot, message, args) => {
     };
     if(output[5]) {
         pokedex_boost_s = capitalize_Words(output[5]).trim()
+        if(pokedex_boost_s === "Partly Cloudy") {
+            pokedex_boost_s = "PartlyCloudy"
+        }
         bot.Pokedex.set(pokedex_english, pokedex_boost_s, 'boost.secondary')
         secondaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_s}`)
     };

@@ -7,7 +7,7 @@ const Pokedex = {
     },
     dex: "",
     shiny: false,
-    nest: true,
+    nest: false,
     type: {
         primary: "",
         secondary: ""

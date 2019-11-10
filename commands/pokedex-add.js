@@ -10,27 +10,38 @@ module.exports.command = {
 }
 
 const Discord = require("discord.js")
-const errors = require("../util/data/errors.json")
 const times = require("../util/data/times.json")
 const Pokedex = require("../keys/Pokedex")
 
+let mainserver = require(`../util/data/server.json`)
+
 exports.run = (bot, message, args) => { 
 
-    // must be developer
-    if (message.author.id !== "373660480532643861") {
-        var developer = new Discord.RichEmbed()
+    let guildSettings_language = bot.guildSettings.get(message.guild.id, 'language');
+    let errors = require(`../util/responses/${guildSettings_language}/error.json`)
+    let success = require(`../util/responses/${guildSettings_language}/success.json`)
+
+    if(!bot.guilds.get(mainserver.home.id).members.get(message.author.id).roles.some(role => role.id === mainserver.roles.professor)) {
+        var embed = new Discord.RichEmbed()
+            .setAuthor(errors.code.zero, errors.image)
             .setColor(errors.color)
-            .setAuthor("Error", errors.image)
-            .setTitle("Only the developer can use this command")    
-        return message.channel.send({embed: developer})
-        .then(deleteIT => {
+            .setTitle("Must be **PokeCloud Professor**")
+            .setDescription("[Click here to learn more](https://pokecloud.gitbook.io/pokecloud/about-us/become-a-professor)")
+        return message.channel.send({embed: embed}).then(deleteIT => {
             deleteIT.delete(times.thirtysec)
         });
     };
 
-    let userimage = message.author.avatarURL
-    let user = message.mentions.users.first() || message.author
-    const username = message.guild.member(user).displayName
+    if(message.channel.id !== mainserver.home.professorslab) {
+        // error: must be used in the professors lab
+        var embed = new Discord.RichEmbed()
+            .setAuthor(errors.code.zero, errors.image)
+            .setColor(errors.color)
+            .setTitle("Must be used in the **Professors Lab**")
+        return message.channel.send({embed: embed}).then(deleteIT => {
+            deleteIT.delete(times.thirtysec)
+        });  
+    };
 
 
     let output = args.join(" ").trim().split(",")
@@ -52,7 +63,7 @@ exports.run = (bot, message, args) => {
         pokedex_boost_s = "PartlyCloudy"
     }
 
-    basicNestLanguage = require(`../util/responses/English/basics/nest.json`);
+    let basicNestLanguage = require(`../util/responses/English/basics/nest.json`);
 
     // create new Pokedex with default props
     function createdex(pokedex_english, object) {
@@ -70,24 +81,21 @@ exports.run = (bot, message, args) => {
         pokedex_type_s = capitalize_Words(output[4]).trim()
         bot.Pokedex.set(pokedex_english, pokedex_type_s, 'type.secondary')
         SecondaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_s}`)
-    }
+    };
     if(output[5]) {
         pokedex_boost_s = capitalize_Words(output[5]).trim()
         bot.Pokedex.set(pokedex_english, pokedex_boost_s, 'boost.secondary')
         secondaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_s}`)
-    }  
+    };
 
-    // type emoji
-    primaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_p}`)
+    let primaryTypeEmoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_p}`)
+    let primaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_p}`)
 
-    // weather boost emoji
-    primaryweatherboostemoji = bot.emojis.find(emoji => emoji.name === `Weather_Icon_${pokedex_boost_p}`)
-    
-    // shiny emoji
-    shinyEmoji = bot.emojis.find(emoji => emoji.name === `Icon_Shiny`)
+    let userimage = message.author.avatarURL
+    let user = message.mentions.users.first() || message.author
+    let username = message.guild.member(user).displayName
 
     var embed = new Discord.RichEmbed()
-        embed.setAuthor("Success", success.image)
         embed.setColor(success.color)
         embed.setTitle(pokedex_english + " added to the Pokedex")
         embed.setThumbnail(`https://github.com/MrRecordHolder/pokecloud/blob/master/images/pokemon/en/${pokedex_dex}-${pokedex_english_low}@3x.png?raw=true`)

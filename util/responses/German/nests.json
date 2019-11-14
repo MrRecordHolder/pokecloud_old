@@ -1,0 +1,45 @@
+{
+    "pokestops": "Pokestops",
+    "pokestop": "Pokestop",
+    "gyms": "Arenen",
+    "exgyms": "Ex Raid Arenen",
+    "spawns": "Durchschn Spawns pro Besuch",
+    "rating": "Rating",
+    "notes": "Notes",
+    "directions": "Wegbeschreibung",
+    "unreported": {
+        "title": "Nicht Gemeldet",
+        "description": "Seit der letzten Migration wurden keine Pokemon gemeldet. Besuche den Park und berichte , was du gefunden hast!"
+    },
+    "type": "Type",
+    "boost": "Boost",
+    "city": "Stadt",
+    "state": "Bundesland",
+    "region": "Region",
+    "country": "Land",
+
+    "search": {
+        "worldwide": "Weltweit nicht gemeldet & gemeldet",
+        "statewide": "Bundeslandesweit gemeldet",
+
+        "footer": {
+            "a": "von insgesamt",
+            "b": "Nestern in"
+        }
+    },
+
+    "migration": {
+        "title": "Migrationsdetails",
+        "description": "Nest Migrationen sind alle 2 Wochen. Eine frühe Migration kann auftreten, wenn Pokémon zum Nest-pool hinzugefügt.",
+        "field": {
+            "one": {
+                "title": "Daten",
+                "description": {
+                    "a": "Letze Migration",
+                    "b": "Nächste Migration"
+                }
+            }
+        },
+        "footer": "Daten zur Verfügung gestellt von PokeCloud &"
+    }
+}

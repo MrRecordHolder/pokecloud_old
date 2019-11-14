@@ -1,0 +1,37 @@
+{
+    "image": "https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/GOerror.png?raw=true",
+    "color": "0xFF0000",
+    
+    "code": {
+        "zero": "Error",
+        "one": "Nutzung",
+        "two": "Beispiele",
+        "three": "Argumente"
+    },
+
+    "response": {
+        "one": "wurde nicht gefunden",
+        "two": "ist kein nachgewiesenes nestendes Pokemon",
+
+        "arg": {
+            "channelid": "Zum Einstellen muss eine Kanal-ID angegeben werden",
+            "city": "Zum Einstellen muss eine Stadt angegeben werden",
+            "state": "Zum Einstellen muss ein Bundesland angegeben werden",
+            "region": "Zum Einstellen muss ein Regionsname angegeben werden",
+            "country": "Zum Einstellen muss ein Land angegeben werden",
+            "nestprop": "Die Argumente und die Eingabe müssen gültig sein",
+            "nameANDpokemon": "Der Nestnamen sowie das Nestende Pokemon müssen angeben werden"
+        },
+
+        "permission": {
+            "channel": "Das Ausführen diesen Befehls ist nur möglich im Kanal:",
+            "channelid": "Zum Einstellen muss eine Kanal-ID angegeben werden",
+            "nochannelfound": "Dieser Kanal ist auf diesem Server nicht vorhanden",
+            "citychannel": "Zum Einstellen muss eine Zahl und eine Kanal-ID angegeben werden",
+            "role": {
+                "a": "Du brauchst die",
+                "b": "Rolle, um diesen Befehl auszuführen"
+            }
+        }
+    }
+}

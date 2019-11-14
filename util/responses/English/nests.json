@@ -1,0 +1,45 @@
+{
+    "pokestops": "Pokestops",
+    "pokestop": "Pokestop",
+    "gyms": "Gyms",
+    "exgyms": "Eligible Ex Raid Gyms",
+    "spawns": "Avg Sightings Per Visit",
+    "rating": "Rating",
+    "notes": "Notes",
+    "directions": "Get Directions",
+    "unreported": {
+        "title": "Unreported",
+        "description": "No species have been reported since the last migration. Visit the park and report back what you've discovered!"
+    },
+    "type": "Type",
+    "boost": "Boost",
+    "city": "City",
+    "state": "State",
+    "region": "Region",
+    "country": "Country",
+
+    "search": {
+        "worldwide": "Reported & Unreported Worldwide",
+        "statewide": "Reported Statewide",
+
+        "footer": {
+            "a": "of",
+            "b": "total nests in"
+        }
+    },
+
+    "migration": {
+        "title": "Migration Details",
+        "description": "Nest migrations occur every 2 weeks. An early migration can occur if Pokemon are added or removed from the nesting pool.",
+        "field": {
+            "one": {
+                "title": "Dates",
+                "description": {
+                    "a": "Last Migration",
+                    "b": "Next Migration"
+                }
+            }
+        },
+        "footer": "Data provided by PokeCloud &"
+    }
+}

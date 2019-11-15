@@ -9,7 +9,8 @@
     "response": {
         "reported": {
             "a": "has been reported at",
-            "b": ""
+            "b": "",
+            "c": "'s nesting species has been cleared"
         },
 
         "updated": {

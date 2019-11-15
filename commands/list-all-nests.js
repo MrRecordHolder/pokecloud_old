@@ -194,7 +194,7 @@ exports.run = (bot, message, args) => {
         bot.defaultNest.keyArray().sort().forEach(defaultNest_key =>{
             if(bot.defaultNest.get(defaultNest_key, `serverid`) === message.guild.id) {
                 if(bot.defaultNest.get(defaultNest_key, `location.city`) === capitalize_Words(output)) {
-                
+
                     let defaultNest_messageid = bot.defaultNest.get(defaultNest_key, 'messageid')
                     let defaultNest_channel = bot.defaultNest.get(defaultNest_key, 'channel')
 
@@ -402,6 +402,7 @@ exports.run = (bot, message, args) => {
 
             if(pokedex_key === "?") {
                 var embed = new Discord.RichEmbed()
+                    embed.setColor('36393F');
                     embed.setTitle("**" + defaultNest_key_name + "** - " + defaultNest_city)
                     if(defaultNest_exgyms > 0) {
                         embed.setDescription(`[${nests.directions}](${defaultNest_google})\n${pokestopEmoji}${nests.pokestops}: ${defaultNest_pokestops} | ${gymEmoji}${nests.gyms}: ${defaultNest_gyms}\n${exraidGymEmoji}${nests.exgyms}: ${defaultNest_exgyms}\n${spawnEmoji}${nests.spawns}: ${defaultNest_spawns}`)

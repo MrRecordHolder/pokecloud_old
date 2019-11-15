@@ -1,7 +1,7 @@
 module.exports.command = {
     name: "report-nest",
     aliases: ["rn"],
-    description: "Changes the current Pokemon nesting at the specified park.",
+    description: "Changes the current Pokemon nesting at the specified park. Replace <pokemon> with <?> to clear the current report.",
     category: "Nest",
     usage: "<nest name>, <pokemon>",
     example: "hilton park, pikachu",
@@ -16,10 +16,26 @@ const times = require("../util/data/times.json")
 exports.run = (bot, message, args) => {
     const adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
     const nestrole = bot.guildSettings.get(message.guild.id, 'roles.nest')
+
+    let guildSettings_language = bot.guildSettings.get(message.guild.id, 'language');
+    let guildSettings_language_low = guildSettings_language.toLowerCase();
+    let guildSettings_c_replies = bot.guildSettings.get(message.guild.id, 'clean.commands')
+    let guildSettings_prefix = bot.guildSettings.get(message.guild.id, 'prefix')
+
+    let nests = require(`../util/responses/${guildSettings_language}/nests.json`)
+    let error = require(`../util/responses/${guildSettings_language}/error.json`)
+    let success = require(`../util/responses/${guildSettings_language}/success.json`)
     
     if (!message.member.roles.some(role => role.name === adminrole) && !message.member.roles.some(role => role.name === nestrole)) {
-        // error: must have admin or nest role
-        return;
+        var embed = new Discord.RichEmbed()
+            .setAuthor(error.code.zero, errors.image)
+            .setColor(errors.color)
+            .setTitle(`${error.response.permission.role.a} **${adminrole}** | **${nestrole}** ${error.response.permission.role.b}`)
+        return message.channel.send({embed: embed}).then(deleteIT => {
+            if(guildSettings_c_replies === true) {               
+                deleteIT.delete(times.thirtysec)
+            };
+        });
     };
 
     let output = args.join(" ").trim().split(",")
@@ -27,14 +43,17 @@ exports.run = (bot, message, args) => {
         return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
 
-    if(!output[0]) {
-        // error: no nest provided
-        return;
-    };
-
-    if(!output[1]) {
-        // error: no pokemon provided
-        return;
+    if(!output[0] || !output[1]){
+        var embed = new Discord.RichEmbed()
+            .setAuthor(error.code.zero, errors.image)
+            .setColor(errors.color)
+            .setTitle(error.response.arg.nameANDpokemon)
+            .addField(error.code.two, `${guildSettings_prefix}${this.command.aliases} ${this.command.example}`)
+        return message.channel.send({embed: embed}).then(deleteIT => {
+            if(guildSettings_c_replies === true) {               
+                deleteIT.delete(times.thirtysec)
+            };
+        });
     };
 
     let defaultNest_name = capitalize_Words(output[0]);
@@ -46,12 +65,41 @@ exports.run = (bot, message, args) => {
     };
 
     let defaultNest_key_name = bot.defaultNest.get(defaultNest_key, 'name')
+    let defaultNest_messageid = bot.defaultNest.get(defaultNest_key, 'messageid')
+    let defaultNests_channel = bot.defaultNest.get(defaultNest_key, 'channel')
 
     let pokedex_key = capitalize_Words(output[1]).trim();
     let pokedex_key_low = output[1].trim().toLowerCase();
 
-    let guildSettings_language = bot.guildSettings.get(message.guild.id, 'language');
-    let guildSettings_language_low = guildSettings_language.toLowerCase();
+    if(pokedex_key === "?" || pokedex_key === "Unreported") {
+        bot.defaultNest.set(defaultNest_key, pokedex_key, 'pokemon.current.name')
+
+        bot.channels.get(defaultNests_channel).fetchMessage(defaultNest_messageid).then(editEmbed => {
+            const { RichEmbed } = require ('discord.js');
+            const embed = new RichEmbed (editEmbed.embeds[0]);
+                embed.fields.length = 0;
+                embed.setColor('36393F');
+                embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
+                embed.addField(nests.unreported.title, nests.unreported.description)
+            editEmbed.edit(embed);
+        }).catch(err => {
+            // error: no nest channel
+            console.log("Nest channel not found")
+        });
+
+        let Discord_message_link = `https://discordapp.com/channels/${message.guild.id}/${defaultNests_channel}/${defaultNest_messageid}`
+
+        var embed = new Discord.RichEmbed()
+            embed.setColor('36393F');
+            embed.setTitle(defaultNest_key_name + success.response.c);
+            embed.setDescription(`\n[**Click here to view the nest**](${Discord_message_link})`)
+            embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
+        message.channel.send({embed: embed}).then(deleteIT => {
+            if(guildSettings_c_replies === true) {               
+                deleteIT.delete(times.thirtysec)
+            };
+        });
+    };
 
     if(!bot.Pokedex.has(pokedex_key)) {
         if(guildSettings_language === "German") {
@@ -67,9 +115,6 @@ exports.run = (bot, message, args) => {
         // error: pokemon can not nest
     };
 
-    let defaultNest_messageid = bot.defaultNest.get(defaultNest_key, 'messageid')
-    let defaultNests_channel = bot.defaultNest.get(defaultNest_key, 'channel')
-
     let pokedex_name = bot.Pokedex.get(pokedex_key, `name.${guildSettings_language_low}`)
     let pokedex_dex = bot.Pokedex.get(pokedex_key, 'dex');
     let pokedex_type_p = bot.Pokedex.get(pokedex_key, 'type.primary');
@@ -77,8 +122,6 @@ exports.run = (bot, message, args) => {
     let pokedex_boost_p = bot.Pokedex.get(pokedex_key, 'boost.primary');
     let pokedex_boost_s = bot.Pokedex.get(pokedex_key, 'boost.secondary');
     let pokedex_shiny = bot.Pokedex.get(pokedex_key, 'shiny');
-
-    let nests = require(`../util/responses/${guildSettings_language}/nests.json`)
 
     let type_p_emoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_p}`)
     let type_s_emoji = bot.emojis.find(emoji => emoji.name === `Icon_${pokedex_type_s}`)
@@ -274,8 +317,6 @@ exports.run = (bot, message, args) => {
     /////
     // send confirmation
     /////
-    let guildSettings_c_replies = bot.guildSettings.get(message.guild.id, 'clean.commands')
-    let success = require(`../util/responses/${guildSettings_language}/success.json`)
 
     let Discord_message_link = `https://discordapp.com/channels/${message.guild.id}/${defaultNests_channel}/${defaultNest_messageid}`
 

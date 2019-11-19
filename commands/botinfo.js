@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 
 module.exports.command = {
     name: "botinfo",
-    aliases: [""],
+    aliases: ["bi"],
     description: "Shows bots information.",
     category: "Util",
     usage: "botinfo"
@@ -25,7 +25,8 @@ exports.run = async (bot, message) => {
         .setTitle("PokeCloud information")
         .setColor("RANDOM")
         .setThumbnail(bot.user.avatarURL)
-        .setDescription("Uptime: " + uptime + "\nVersion: " + config.version)
+        .setDescription("Uptime: " + uptime)
+        .addField("Version", config.version)
         .addField("Data", `Servers: ${bot.guildSettings.size}\nTrainers: ${bot.users.size}\nNests: ${bot.defaultNest.size}\nPokedex: ${bot.Pokedex.size}`)
     return message.channel.send(embed);
 }

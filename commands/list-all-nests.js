@@ -11,24 +11,38 @@ module.exports.command = {
 }
 
 exports.run = (bot, message, args) => {   
-
-    const adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
+    
+    let guildSettings_language = bot.guildSettings.get(message.guild.id, 'language');
+    let adminrole = bot.guildSettings.get(message.guild.id, 'roles.admin')
+    let roleadmin = message.guild.roles.find(r => r.name === adminrole)
+    let guildSettings_c_replies = bot.guildSettings.get(message.guild.id, 'clean.commands')
+    let error = require(`../util/responses/${guildSettings_language}/error.json`);
     
     if (!message.member.roles.some(role => role.name === adminrole)) {
-        // error: must have admin or nest role
-        return;
+        var embed = new Discord.RichEmbed()
+            .setAuthor(error.code.zero, errors.image)
+            .setColor(error.color)
+            .setTitle(error.response.permission.role.a + " " + roleadmin + " " + error.response.permission.role.b)
+        return message.channel.send({embed: embed}).then(deleteIT => {
+            if(guildSettings_c_replies === true) {               
+                deleteIT.delete(times.thirtysec)
+            };
+        });
     };
     
-    const guildSettings_nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
-    const guildSettings_cityone = bot.guildSettings.get(message.guild.id, 'channels.city.one')
-    const guildSettings_citytwo = bot.guildSettings.get(message.guild.id, 'channels.city.two')
-
     let chanID = message.channel.id
+    let guildSettings_nestchannel = bot.guildSettings.get(message.guild.id, 'channels.nest')
 
-    if(chanID !== guildSettings_nestchannel && chanID !== guildSettings_cityone && chanID !== guildSettings_citytwo) {
-        // error: channel not found
-        console.log('error here')
-        return;
+    if(!guildSettings_nestchannel.includes(chanID)) {
+        var embed = new Discord.RichEmbed()
+            .setAuthor(error.code.zero, errors.image)
+            .setColor(error.color)
+            .setTitle("This command can not be used here")
+        return message.channel.send({embed: embed}).then(deleteIT => {
+            if(guildSettings_c_replies === true) {               
+                deleteIT.delete(times.thirtysec)
+            };
+        });
     };
 
     let output = args.join(" ").trim()
@@ -36,7 +50,7 @@ exports.run = (bot, message, args) => {
         return output.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
 
-    let guildSettings_language = bot.guildSettings.get(message.guild.id, 'language');
+    
     let guildSettings_language_low = guildSettings_language.toLowerCase();
 
     let guildSettings_migration_messageid = bot.guildSettings.get(message.guild.id, 'migration.messageid')
@@ -178,7 +192,7 @@ exports.run = (bot, message, args) => {
                                     embed.addField("#" + pokedex_dex + " " + pokedex_name, `${nests.type}: ${type_p_emoji} ${pokedex_type_p} ${type_s_emoji} ${pokedex_type_s}\n${nests.boost}: ${boost_p_emoji} ${pokedex_boost_p} ${boost_s_emoji} ${pokedex_boost_s}`)
                                 };
                             };
-                        return bot.channels.get(guildSettings_nestchannel).send(embed).then(message => {
+                        return message.channel.send(embed).then(message => {
                             bot.defaultNest.set(defaultNest_key, message.channel.lastMessageID, "messageid")
                             bot.defaultNest.set(defaultNest_key, message.channel.id, 'channel')
                         }).catch(err => {
@@ -231,7 +245,7 @@ exports.run = (bot, message, args) => {
                             embed.fields.length = 0;
                             embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                             embed.addField(nests.unreported.title, nests.unreported.description)
-                        return bot.channels.get(guildSettings_nestchannel).send(embed).then(message => {
+                        return message.channel.send(embed).then(message => {
                             bot.defaultNest.set(defaultNest_key, message.channel.lastMessageID, "messageid")
                             bot.defaultNest.set(defaultNest_key, message.channel.id, 'channel')
                         }).catch(err => {
@@ -341,7 +355,7 @@ exports.run = (bot, message, args) => {
                                 embed.addField("#" + pokedex_dex + " " + pokedex_name, `${nests.type}: ${type_p_emoji} ${pokedex_type_p} ${type_s_emoji} ${pokedex_type_s}\n${nests.boost}: ${boost_p_emoji} ${pokedex_boost_p} ${boost_s_emoji} ${pokedex_boost_s}`)
                             };
                         };
-                    return bot.channels.get(guildSettings_nestchannel).send(embed).then(message => {
+                    return message.channel.send(embed).then(message => {
                         bot.defaultNest.set(defaultNest_key, message.channel.lastMessageID, "messageid")
                         bot.defaultNest.set(defaultNest_key, message.channel.id, 'channel')
                     }).catch(err => {
@@ -378,11 +392,15 @@ exports.run = (bot, message, args) => {
             let defaultNest_messageid = bot.defaultNest.get(defaultNest_key, 'messageid')
             let defaultNest_channel = bot.defaultNest.get(defaultNest_key, 'channel')
 
-            bot.channels.get(defaultNest_channel).fetchMessage(defaultNest_messageid).then(oldembed => {
-                if (oldembed) oldembed.delete();               
-            }).catch(err => {
-                // skip deletion
-            });
+            if(defaultNest_messageid !== "") {
+                bot.channels.get(defaultNest_channel).fetchMessage(defaultNest_messageid).then(oldembed => {
+                    if (oldembed) {
+                        oldembed.delete();
+                    }               
+                }).catch(err => {
+                    console.log("Skipping deletion of " + defaultNest_key);
+                });
+            }
 
             let pokedex_key = bot.defaultNest.get(defaultNest_key, 'pokemon.current.name')
             let pokedex_key_low = pokedex_key.toLowerCase();
@@ -412,7 +430,7 @@ exports.run = (bot, message, args) => {
                     embed.fields.length = 0;
                     embed.setThumbnail("https://github.com/MrRecordHolder/pokecloud/blob/master/images/emojis/spawn.png?raw=true")
                     embed.addField(nests.unreported.title, nests.unreported.description)
-                return bot.channels.get(guildSettings_nestchannel).send(embed).then(message => {
+                return message.channel.send(embed).then(message => {
                     bot.defaultNest.set(defaultNest_key, message.channel.lastMessageID, "messageid")
                     bot.defaultNest.set(defaultNest_key, message.channel.id, 'channel')
                 }).catch(err => {
@@ -522,7 +540,7 @@ exports.run = (bot, message, args) => {
                         embed.addField("#" + pokedex_dex + " " + pokedex_name, `${nests.type}: ${type_p_emoji} ${pokedex_type_p} ${type_s_emoji} ${pokedex_type_s}\n${nests.boost}: ${boost_p_emoji} ${pokedex_boost_p} ${boost_s_emoji} ${pokedex_boost_s}`)
                     };
                 };
-            return bot.channels.get(guildSettings_nestchannel).send(embed).then(message => {
+            return message.channel.send(embed).then(message => {
                 bot.defaultNest.set(defaultNest_key, message.channel.lastMessageID, "messageid")
                 bot.defaultNest.set(defaultNest_key, message.channel.id, 'channel')
             }).catch(err => {
